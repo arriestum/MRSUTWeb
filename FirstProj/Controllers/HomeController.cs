@@ -25,5 +25,9 @@ namespace FirstProj.Controllers
         {
             return View();
         }
+        public ActionResult TermenSiConditii()
+        {
+            return View();
+        }
     }
 }

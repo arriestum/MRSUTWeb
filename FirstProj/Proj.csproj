@@ -262,6 +262,7 @@
     <Content Include="Views\Home\Deposits.cshtml" />
     <Content Include="Views\Home\DepositMoneyPlus.cshtml" />
     <None Include="packages.config" />
+    <Content Include="Views\Home\TermenSiConditii.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
