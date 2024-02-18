@@ -25,7 +25,11 @@ namespace FirstProj.Controllers
         {
             return View();
         }
-        public ActionResult TermenSiConditii()
+        public ActionResult TermService()
+        {
+            return View();
+        }
+        public ActionResult PrivacyPolicy()
         {
             return View();
         }
