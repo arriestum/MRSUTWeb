@@ -4,159 +4,140 @@
 
 <html>
 <head>
-     <meta charset="utf-8">
-     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-     <title>Bad Bank</title>
-     <meta content="" name="description">
-     <meta content="" name="keywords">
+    <title>Bad Bank</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
 
-     <!-- Favicons -->
-     <link href="~/assets/img/favicon.png" rel="icon">
-     <link href="~/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- Favicons -->
+    <link href="~/assets/img/favicon.png" rel="icon">
+    <link href="~/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-     <!-- Google Fonts -->
-     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-     <!-- Vendor CSS Files -->
-     @Styles.Render("~/bundles/styles/animate/css")
-     @Styles.Render("~/bundles/styles/bootstrap/css")
-     @Styles.Render("~/bundles/styles/bootstrap-icon/css")
-     @Styles.Render("~/bundles/styles/boxicons/css")
-     @Styles.Render("~/bundles/styles/glightbox/css")
-     @Styles.Render("~/bundles/styles/remixicon/css")
-     @Styles.Render("~/bundles/styles/swiper-bundle/css")
+    <!-- Vendor CSS Files -->
+    @Styles.Render("~/bundles/styles/animate/css")
+    @Styles.Render("~/bundles/styles/bootstrap/css")
+    @Styles.Render("~/bundles/styles/bootstrap-icon/css")
+    @Styles.Render("~/bundles/styles/boxicons/css")
+    @Styles.Render("~/bundles/styles/glightbox/css")
+    @Styles.Render("~/bundles/styles/remixicon/css")
+    @Styles.Render("~/bundles/styles/swiper-bundle/css")
 
-     @if (IsSectionDefined("Styles"))
-     {@RenderSection("Styles", required: false)}
+    @if (IsSectionDefined("Styles"))
+    {@RenderSection("Styles", required: false)}
 
-     <!-- Template Main CSS File -->
-     @Styles.Render("~/bundles/styles/style/css")
+    <!-- Template Main CSS File -->
+    @Styles.Render("~/bundles/styles/style/css")
 </head>
 
 <body>
 
-     <!-- ======= Header ======= -->
-     <header id="header" class="fixed-top d-flex align-items-center">
-          <div class="container d-flex align-items-center">
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-center">
+        <div class="container d-flex align-items-center">
 
-               <h1 class="logo me-auto">@Html.ActionLink("Bad Bank", "Index", "Home")</h1>
-               <!-- Uncomment below if you prefer to use an image logo -->
-               <!-- <a href="index.html" class="logo me-auto"><img src="~/assets/img/logo.png" alt="" class="img-fluid"></a>-->
+            <h1 class="logo me-auto">@Html.ActionLink("Bad Bank", "Index", "Home")</h1>
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <a href="index.html" class="logo me-auto"><img src="~/assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-               <nav id="navbar" class="navbar">
-                    <ul>
-                         <li>@Html.ActionLink("Acasa", "Index", "Home")</li>
-                         <li>
-                             @Html.ActionLink("Informații", "About", "Home")
-                         </li>
-                         <li>@Html.ActionLink("Depozite", "Deposits", "Home")</li>
-                         <li>@Html.ActionLink("Cont personal", "LogIn", "Home")</li>
-
-
-
-                    </ul>
-                    <i class="bi bi-list mobile-nav-toggle"></i>
-               </nav><!-- .navbar -->
-
-          </div>
-     </header><!-- End Header -->
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li>@Html.ActionLink("Acasa", "Index", "Home")</li>
+                    <li>
+                        @Html.ActionLink("Informații", "About", "Home")
+                    </li>
+                    <li>@Html.ActionLink("Depozite", "Deposits", "Home")</li>
+                    <li>@Html.ActionLink("Cont personal", "LogIn", "Home")</li>
 
 
-     <div>
-          @RenderBody()
-     </div>
-     <!-- ======= Footer ======= -->
-     <footer id="footer">
-          <div class="footer-top">
-               <div class="container">
-                    <div class="row">
 
-                         <div class="col-lg-3 col-md-6">
-                              <div class="footer-info">
-                                   <h3>Sailor</h3>
-                                   <p>
-                                        A108 Adam Street <br>
-                                        NY 535022, USA<br><br>
-                                        <strong>Phone:</strong> +1 5589 55488 55<br>
-                                        <strong>Email:</strong> info@example.com<br>
-                                   </p>
-                                   <div class="social-links mt-3">
-                                        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                                        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                                        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                                        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                                        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-                                   </div>
-                              </div>
-                         </div>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
 
-                         <div class="col-lg-2 col-md-6 footer-links">
-                              <h4>Useful Links</h4>
-                              <ul>
-                                  <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-                                  <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-                                  <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-                                  <li><i class="bx bx-chevron-right"></i> @Html.ActionLink("Termeni și Condiții", "TermService", "Home")</li>
-                                  <li><i class="bx bx-chevron-right"></i> @Html.ActionLink("Politica de confidențialitate", "PrivacyPolicy", "Home")</li>
-                              </ul>
-                         </div>
+        </div>
+    </header><!-- End Header -->
 
-                         <div class="col-lg-3 col-md-6 footer-links">
-                              <h4>Our Services</h4>
-                              <ul>
-                                   <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-                                   <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-                                   <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-                                   <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-                                   <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-                              </ul>
-                         </div>
 
-                         <div class="col-lg-4 col-md-6 footer-newsletter">
-                              <h4>Our Newsletter</h4>
-                              <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-                              <form action="" method="post">
-                                   <input type="email" name="email"><input type="submit" value="Subscribe">
-                              </form>
+    <div>
+        @RenderBody()
+    </div>
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
 
-                         </div>
-
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-info">
+                            <h3>Bad Bank</h3>
+                            <p>
+                                Strada Tomah <br>
+                                OP 3220, Republica Briceni<br><br>
+                                <strong>Legătură clienți:</strong> +373 11 22 55<br>
+                                <strong>Email:</strong> badbank@nil.com<br>
+                            </p>
+                            <div class="social-links mt-3">
+                                <a class="twitter"><i class="bx bxl-twitter"></i></a>
+                                <a class="facebook"><i class="bx bxl-facebook"></i></a>
+                                <a class="instagram"><i class="bx bxl-instagram"></i></a>
+                                <a class="google-plus"><i class="bx bxl-skype"></i></a>
+                                <a class="linkedin"><i class="bx bxl-linkedin" ></i></a>
+                            </div>
+                        </div>
                     </div>
-               </div>
-          </div>
 
-          <div class="container">
-               <div class="copyright">
-                    &copy; Copyright <strong><span>Sailor</span></strong>. All Rights Reserved
-               </div>
-               <div class="credits">
-                    <!-- All the links in the footer should remain intact. -->
-                    <!-- You can delete the links only if you purchased the pro version. -->
-                    <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/sailor-free-bootstrap-theme/ -->
-                    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-               </div>
-          </div>
-     </footer><!-- End Footer -->
+                    <div class="col-lg-2 col-md-6 footer-links">
+                        <h4>Linkuri utile</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> @Html.ActionLink("Acasă", "Index", "Home")</li>
+                            <li><i class="bx bx-chevron-right"></i> @Html.ActionLink("Informații", "about", "Home")</li>
+                            <li><i class="bx bx-chevron-right"></i> @Html.ActionLink("Depozite", "Deposits", "Home")</li>
+                            <li><i class="bx bx-chevron-right"></i> @Html.ActionLink("Termeni și Condiții", "TermService", "Home")</li>
+                            <li><i class="bx bx-chevron-right"></i> @Html.ActionLink("Politica de confidențialitate", "PrivacyPolicy", "Home")</li>
+                        </ul>
+                    </div>
 
-     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+                    <div class="col-lg-4 col-md-6 footer-newsletter">
+                        <h4>Noutățile noastre</h4>
+                        <p>Descoperă noutățile și beneficiile noastre exclusive în newsletter-ul Bad Bank!</p>
+                        <form action="" method="post">
+                            <input type="email" name="email"><input type="submit" value="Abonare" disabled>
+                        </form>
+                    </div>
 
-     <!-- Vendor JS Files -->
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="copyright">
+                &copy; Copyright <strong><span>© "Bad Bank" </span></strong>. All Rights Reserved
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
 
 
-     <script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-     <script src="~/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/vendor/swiper/swiper-bundle.min.js"></script>
 
-     @Scripts.Render("~/bundles/glightbox/js")
-     @Scripts.Render("~/bundles/isotope/js")
-     @Scripts.Render("~/bundles/waypoints/j")
-     @Scripts.Render("~/bundles/validate/js")
+    @Scripts.Render("~/bundles/glightbox/js")
+    @Scripts.Render("~/bundles/isotope/js")
+    @Scripts.Render("~/bundles/waypoints/j")
+    @Scripts.Render("~/bundles/validate/js")
 
-     <!-- Template Main JS File -->
+    <!-- Template Main JS File -->
 
-     @Scripts.Render("~/bundles/main/js")
+    @Scripts.Render("~/bundles/main/js")
 
-     @RenderSection("Scripts", required: false)
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
