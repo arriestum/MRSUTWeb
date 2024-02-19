@@ -99,6 +99,7 @@
   <ItemGroup>
     <Content Include="assets\css\style.css" />
     <Content Include="assets\img\apple-touch-icon.png" />
+    <Content Include="assets\img\badbank1.png" />
     <Content Include="assets\img\blog\blog-1.jpg" />
     <Content Include="assets\img\blog\blog-2.jpg" />
     <Content Include="assets\img\blog\blog-3.jpg" />
@@ -138,6 +139,7 @@
     <Content Include="assets\img\portfolio\Cards\Pink_card.png" />
     <Content Include="assets\img\portfolio\Cards\Platinum_card.png" />
     <Content Include="assets\img\portfolio\Cards\Silver_card.png" />
+    <Content Include="assets\img\parteneri1.png" />
     <Content Include="assets\img\portfolio\depozitMoneyPlusFirst.jpg" />
     <Content Include="assets\img\portfolio\depozitMoneyPlus2.jpg" />
     <Content Include="assets\img\portfolio\depozitMoneyPlus3.jpg" />
@@ -273,7 +275,8 @@
     <Content Include="Views\Home\Deposits.cshtml" />
     <Content Include="Views\Home\DepositMoneyPlus.cshtml" />
     <None Include="packages.config" />
-    <Content Include="Views\Home\TermenSiConditii.cshtml" />
+    <Content Include="Views\Home\TermService.cshtml" />
+    <Content Include="Views\Home\PrivacyPolicy.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

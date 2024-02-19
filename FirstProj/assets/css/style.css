@@ -525,6 +525,10 @@ h6 {
 
 }
 
+.banca1 {
+    margin-top: 20px;
+}
+
 /*--------------------------------------------------------------
 # Sections General
 --------------------------------------------------------------*/
@@ -935,7 +939,8 @@ section {
 
 .team .member .pic {
   overflow: hidden;
-  width: 140px;
+  width: 100%;
+  height: auto;
   border-radius: 4px;
 }
 
