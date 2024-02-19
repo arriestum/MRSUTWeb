@@ -140,6 +140,9 @@
     <Content Include="assets\img\portfolio\Cards\Platinum_card.png" />
     <Content Include="assets\img\portfolio\Cards\Silver_card.png" />
     <Content Include="assets\img\parteneri1.png" />
+    <Content Include="assets\img\portfolio\Cashback\cultura.png" />
+    <Content Include="assets\img\portfolio\Cashback\electronica.png" />
+    <Content Include="assets\img\portfolio\Cashback\food.png" />
     <Content Include="assets\img\portfolio\depozitMoneyPlusFirst.jpg" />
     <Content Include="assets\img\portfolio\depozitMoneyPlus2.jpg" />
     <Content Include="assets\img\portfolio\depozitMoneyPlus3.jpg" />
