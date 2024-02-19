@@ -1,4 +1,4 @@
-/**
+﻿/**
 * Template Name: Sailor
 * Updated: Jan 29 2024 with Bootstrap v5.3.2
 * Template URL: https://bootstrapmade.com/sailor-free-bootstrap-theme/
@@ -388,6 +388,11 @@ h6 {
 
 #hero .container {
   text-align: center;
+}
+
+.container-login {
+     text-align: center;
+     margin: 0 auto;
 }
 
 #hero h2 {
@@ -2126,3 +2131,33 @@ section {
 #footer .credits a:hover {
   color: white;
 }
+
+/*Log In Page*/
+
+input.login, input.password {
+     padding: 10px;
+     margin: 15px auto;
+     margin-bottom: 15px;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+     width: 300px; 
+     text-align: center;
+     font-size: 16px; 
+}
+
+button.LogInButton {
+     padding: 10px 20px; /* Padding pentru a mări dimensiunea butonului */
+     background-color: #007bff; /* Culoarea de fundal a butonului */
+     color: #fff; /* Culoarea textului */
+     border: none; /* Eliminarea marginii */
+     border-radius: 5px; /* Unghiurile rotunjite ale butonului */
+     cursor: pointer; /* Cursor pointer pentru a indica faptul că butonul este clicabil */
+     font-size: 16px; /* Dimensiunea textului */
+     transition: background-color 0.3s ease; /* Efect de tranziție pentru schimbarea culorii de fundal */
+}
+
+button.LogInButton:hover {
+     background-color: #0056b3; /* Culoarea de fundal a butonului la interacțiunea cu cursorul */
+     }
+
+
