@@ -286,6 +286,9 @@
     <Content Include="Views\Home\TermService.cshtml" />
     <Content Include="Views\Home\PrivacyPolicy.cshtml" />
     <Content Include="Views\Home\LogIn.cshtml" />
+    <Content Include="Views\Home\DepositMoneyMegaGain.cshtml" />
+    <Content Include="Views\Home\DepositMoneyUp.cshtml" />
+    <Content Include="Views\Home\DepositRiseBusiness.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
