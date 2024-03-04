@@ -183,29 +183,22 @@
 
 })()
 
-// Selectați elementele checkbox și butonul
 var termsCheck = document.getElementById('TermsCheck');
 var privacyCheck = document.getElementById('PrivacyCheck');
 var logInButton = document.getElementById('LogInButton');
 
-// Adăugați un eveniment de ascultare pentru schimbarea stării câmpurilor de bifare
 termsCheck.addEventListener('change', toggleButtonState);
 privacyCheck.addEventListener('change', toggleButtonState);
 
-// Funcția pentru activarea sau dezactivarea butonului
 function toggleButtonState() {
-     // Verificați dacă ambele casete de bifare sunt bifate
      if (termsCheck.checked && privacyCheck.checked) {
-          // Activează butonul
           logInButton.disabled = false;
      } else {
-          // Dezactivează butonul
           logInButton.disabled = true;
      }
 }
 
-// Funcția pentru redirecționare
+
 function redirectToPage() {
-     // Redirecționează către pagina specificată
      window.location.href = '~/Home/Index';
 }
