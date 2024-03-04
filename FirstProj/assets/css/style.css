@@ -2146,18 +2146,18 @@ input.login, input.password {
 }
 
 button.LogInButton {
-     padding: 10px 20px; /* Padding pentru a mări dimensiunea butonului */
-     background-color: #007bff; /* Culoarea de fundal a butonului */
-     color: #fff; /* Culoarea textului */
-     border: none; /* Eliminarea marginii */
-     border-radius: 5px; /* Unghiurile rotunjite ale butonului */
-     cursor: pointer; /* Cursor pointer pentru a indica faptul că butonul este clicabil */
-     font-size: 16px; /* Dimensiunea textului */
-     transition: background-color 0.3s ease; /* Efect de tranziție pentru schimbarea culorii de fundal */
+     padding: 10px 20px;
+     background-color: #007bff;
+     color: #fff;
+     border: none;
+     border-radius: 5px;
+     cursor: pointer;
+     font-size: 16px;
+     transition: background-color 0.3s ease; 
 }
 
 button.LogInButton:hover {
-     background-color: #0056b3; /* Culoarea de fundal a butonului la interacțiunea cu cursorul */
+     background-color: #0056b3; 
      }
 
 
