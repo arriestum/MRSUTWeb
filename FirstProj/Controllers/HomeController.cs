@@ -25,6 +25,18 @@ namespace FirstProj.Controllers
         {
             return View();
         }
+        public ActionResult DepositMoneyUp()
+        {
+            return View();
+        }
+        public ActionResult DepositMoneyMegaGain()
+        {
+            return View();
+        }
+        public ActionResult DepositRiseBusiness()
+        {
+            return View();
+        }
         public ActionResult TermService()
         {
             return View();
