@@ -1,0 +1,24 @@
+﻿USE MASTER
+GO
+IF EXISTS(SELECT * FROM sys.databases WHERE NAME='MRSUTWeb')
+BEGIN
+ALTER DATABASE MRSUTWeb SET SINGLE_USER
+WITH ROLLBACK IMMEDIATE
+DROP DATABASE MRSUTWeb
+END
+GO
+CREATE DATABASE MRSUTWeb
+GO
+USE MRSUTWeb
+GO
+
+CREATE TABLE [dbo].[UDbTables](
+[Id]	[int] IDENTITY(1,1) NOT NULL,
+[Username]	[nvarchar](50) NOT NULL,
+[Password]	[nvarchar](50) NOT NULL,
+[Email]	[nvarchar](50) NOT NULL,
+[LastLogin]	[datetime] NOT NULL,
+[LastIp]	[nvarchar](30) NOT NULL,
+CONSTRAINT [PK_UDbTables] PRIMARY KEY CLUSTERED 
+([Id] ASC)
+);
