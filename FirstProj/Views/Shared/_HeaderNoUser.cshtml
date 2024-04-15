@@ -1,0 +1,28 @@
+﻿
+@model MRSUTWeb.Web.Models.UserData
+
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top d-flex align-items-center">
+     <div class="container d-flex align-items-center">
+
+          <h1 class="logo me-auto">@Html.ActionLink("Bad Bank", "Index", "Home")</h1>
+          <!-- Uncomment below if you prefer to use an image logo -->
+          <!-- <a href="index.html" class="logo me-auto"><img src="~/assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+          <nav id="navbar" class="navbar">
+               <ul>
+                    <li>@Html.ActionLink("Acasa", "Index", "Home")</li>
+                    <li>
+                         @Html.ActionLink("Informații", "About", "Home")
+                    </li>
+                    <li>@Html.ActionLink("Depozite", "Deposits", "Home")</li>
+                    <li>@Html.ActionLink("Cont personal", "LogIn", "Login")</li>
+
+
+
+               </ul>
+               <i class="bi bi-list mobile-nav-toggle"></i>
+          </nav><!-- .navbar -->
+
+     </div>
+</header><!-- End Header -->

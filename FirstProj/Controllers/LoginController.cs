@@ -10,8 +10,14 @@ using MRSUTWeb.Domain.Entities.User;
 
 namespace FirstProj.Controllers
 {
+
     public class LoginController : Controller
     {
+        public ActionResult LogIn()
+        {
+            return View();
+        }
+
         private readonly ISession _session;
         public LoginController()
         {

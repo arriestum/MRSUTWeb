@@ -184,12 +184,15 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserData.cs" />
+    <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -232,7 +235,6 @@
     <Content Include="assets\vendor\remixicon\remixicon.woff2" />
     <Content Include="assets\vendor\swiper\swiper-bundle.min.js.map" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\_LayoutPage1.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\about.cshtml" />
     <Content Include="Views\Home\Deposits.cshtml" />
@@ -240,10 +242,15 @@
     <None Include="packages.config" />
     <Content Include="Views\Home\TermService.cshtml" />
     <Content Include="Views\Home\PrivacyPolicy.cshtml" />
-    <Content Include="Views\Home\LogIn.cshtml" />
+    <Content Include="Views\Login\LogIn.cshtml" />
     <Content Include="Views\Home\DepositMoneyMegaGain.cshtml" />
     <Content Include="Views\Home\DepositMoneyUp.cshtml" />
     <Content Include="Views\Home\DepositRiseBusiness.cshtml" />
+    <Content Include="Views\Shared\_LayoutNoUser.cshtml" />
+    <Content Include="Views\Shared\_HeaderNoUser.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_LayoutWithUser.cshtml" />
+    <Content Include="Views\Shared\_HeaderWithUser.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -254,8 +261,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\" />
-    <Folder Include="Models\" />
-    <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MRSUTWeb.BusinessLogic\MRSUTWeb.BusinessLogic.csproj">

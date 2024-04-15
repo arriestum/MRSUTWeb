@@ -1,252 +1,254 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Home/_LayoutPage1.cshtml";
+     ViewBag.Title = "Index";
+     Layout = "~/Views/Shared/_LayoutNoUser.cshtml";
 }
 
-<!-- ======= Hero Section ======= -->
+@model MRSUTWeb.Web.Models.UserData
+
+
 <!-- ======= Hero Section ======= -->
 <section id="hero">
-    <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+     <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
 
-        <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+          <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
 
-        <div class="carousel-inner" role="listbox">
+          <div class="carousel-inner" role="listbox">
 
-            <!-- Slide 1 -->
-            <div class="carousel-item active" style="background-image: url(/assets/img/slide/slide1.jpg)">
-                <div class="carousel-container">
-                    <div class="container">
-                        <h2 class="animate__animated animate__fadeInDown">Noi ne-am deschis!</h2>
-                        <p class="animate__animated animate__fadeInUp">Bine ati venit la Bad Bank! Aici puteti avea parte de servicii bancare de inalta calitate. Adresa noastra este...</p>
-                        <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Afla mai multe...</a>
+               <!-- Slide 1 -->
+               <div class="carousel-item active" style="background-image: url(/assets/img/slide/slide1.jpg)">
+                    <div class="carousel-container">
+                         <div class="container">
+                              <h2 class="animate__animated animate__fadeInDown">Noi ne-am deschis!</h2>
+                              <p class="animate__animated animate__fadeInUp">Bine ati venit la Bad Bank! Aici puteti avea parte de servicii bancare de inalta calitate. Adresa noastra este...</p>
+                              <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Afla mai multe...</a>
+                         </div>
                     </div>
-                </div>
-            </div>
+               </div>
 
-            <!-- Slide 2 -->
-            <div class="carousel-item" style="background-image: url(/assets/img/slide/slide2.jpg)">
-                <div class="carousel-container">
-                    <div class="container">
-                        <h2 class="animate__animated animate__fadeInDown">Depozite cu rate avantajoase</h2>
-                        <p class="animate__animated animate__fadeInUp">Doar la Bad Bank puteti gasi depozite cu rata fixa de 11% anual, iar rata flotanta de peste 13%.</p>
-                        <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Afla mai multe...</a>
+               <!-- Slide 2 -->
+               <div class="carousel-item" style="background-image: url(/assets/img/slide/slide2.jpg)">
+                    <div class="carousel-container">
+                         <div class="container">
+                              <h2 class="animate__animated animate__fadeInDown">Depozite cu rate avantajoase</h2>
+                              <p class="animate__animated animate__fadeInUp">Doar la Bad Bank puteti gasi depozite cu rata fixa de 11% anual, iar rata flotanta de peste 13%.</p>
+                              <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Afla mai multe...</a>
+                         </div>
                     </div>
-                </div>
-            </div>
+               </div>
 
-            <!-- Slide 3 -->
-            <div class="carousel-item" style="background-image: url(/assets/img/slide/slide3.jpg)">
-                <div class="carousel-container">
-                    <div class="container">
-                        <h2 class="animate__animated animate__fadeInDown">Internet Banking</h2>
-                        <p class="animate__animated animate__fadeInUp">Gestioneaza-ti banii la distanta. Logheaza-te in contul personal, verifica starea cardului, efectueaza transfer, achita serviciile si multe altele doar in cateva click-uri.</p>
-                        <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Afla mai multe...</a>
+               <!-- Slide 3 -->
+               <div class="carousel-item" style="background-image: url(/assets/img/slide/slide3.jpg)">
+                    <div class="carousel-container">
+                         <div class="container">
+                              <h2 class="animate__animated animate__fadeInDown">Internet Banking</h2>
+                              <p class="animate__animated animate__fadeInUp">Gestioneaza-ti banii la distanta. Logheaza-te in contul personal, verifica starea cardului, efectueaza transfer, achita serviciile si multe altele doar in cateva click-uri.</p>
+                              <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Afla mai multe...</a>
+                         </div>
                     </div>
-                </div>
-            </div>
+               </div>
 
-        </div>
+          </div>
 
-        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
-        </a>
+          <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+               <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+          </a>
 
-        <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
-            <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
-        </a>
+          <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+               <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+          </a>
 
-    </div>
+     </div>
 </section><!-- End Hero -->
 
 <main id="main">
 
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-        <div class="container">
+     <!-- ======= About Section ======= -->
+     <section id="about" class="about">
+          <div class="container">
 
-            <div class="row content">
-                <div class="col-lg-6">
-                    <h2>Noi suntem Bad Bank</h2>
-                    <h3>
-                        La Bad Bank, credem că este timpul să schimbăm modul în care vedeți și experimentați serviciile bancare.
-                        Suntem o bancă dedicată inovației, accesului simplificat și soluțiilor financiare personalizate pentru fiecare client.
-                        Indiferent de ceea ce vă propuneți să realizați, suntem aici să vă susținem și să vă îndrumăm pe drumul către succes financiar.
-                    </h3>
-                </div>
-                <div class="col-lg-6 pt-4 pt-lg-0">
-                    <p>
-                        Iată ce vă oferim la Bad Bank:
-                    </p>
-                    <ul>
-                        <li><i class="ri-check-double-line"></i> <b>Produse bancare flexibile</b>: De la conturi de economii și de verificare la credite și împrumuturi, avem produse bancare care se potrivesc nevoilor dvs. unice.</li>
-                        <li><i class="ri-check-double-line"></i> <b>Experiență digitală de top:</b> Cu platforma noastră online și aplicația mobilă, puteți gestiona conturile dvs. și efectua tranzacții în orice moment și de oriunde, oferindu-vă libertatea și controlul asupra finanțelor dvs.</li>
-                        <li><i class="ri-check-double-line"></i> <b>Investiții inteligente:</b> Echipa noastră de experți vă poate ajuta să navigați în lumea investițiilor, oferindu-vă sfaturi și soluții personalizate pentru a vă ajuta să vă atingeți obiectivele financiare.</li>
-
-                    </ul>
-                    <p class="fst-italic">
-
-                        Alăturați-vă nouă și descoperiți cum putem face lucruri extraordinare împreună.
-                    </p>
-                </div>
-            </div>
-
-        </div>
-    </section><!-- End About Section -->
-    <!-- ======= Clients Section ======= -->
-    <h2 class="text-center">Clienții noștri</h2>
-
-    <section id="clients" class="clients section-bg">
-        <div class="container">
-
-            <div class="row">
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="~/assets/img/clients/UTM_LOGO.png" class="img-fluid" alt="">
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="~/assets/img/clients/ROMPETROL_LOGO.png" class="img-fluid" alt="">
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="~/assets/img/clients/UKR_LOGO.png" class="img-fluid" alt="">
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="~/assets/img/clients/UN_LOGO.png" class="img-fluid" alt="">
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="~/assets/img/clients/UNICEF_LOGO.png" class="img-fluid" alt="">
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="~/assets/img/clients/NICKELODEON_LOGO.png" class="img-fluid" alt="">
-                </div>
-
-            </div>
-
-        </div>
-    </section><!-- End Clients Section -->
-    <!-- ======= Services Section ======= -->
-    <section id="services" class="services">
-        <div class="container">
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="icon-box">
-                        <i class="bi bi-briefcase"></i>
-                        <h4><a href="#">Transparența</a></h4>
-                        <p>Ne angajăm să fim transparenți în toate aspectele relației noastre cu clienții, comunicând clar și onest despre produsele, serviciile și politica noastră.</p>
+               <div class="row content">
+                    <div class="col-lg-6">
+                         <h2>Noi suntem Bad Bank</h2>
+                         <h3>
+                              La Bad Bank, credem că este timpul să schimbăm modul în care vedeți și experimentați serviciile bancare.
+                              Suntem o bancă dedicată inovației, accesului simplificat și soluțiilor financiare personalizate pentru fiecare client.
+                              Indiferent de ceea ce vă propuneți să realizați, suntem aici să vă susținem și să vă îndrumăm pe drumul către succes financiar.
+                         </h3>
                     </div>
-                </div>
-                <div class="col-md-6 mt-4 mt-md-0">
-                    <div class="icon-box">
-                        <i class="bi bi-card-checklist"></i>
-                        <h4><a href="#">Responsabilitate socială</a></h4>
-                        <p>Ne implicăm activ în comunitatea noastră și sprijinim proiecte și inițiative care aduc beneficii societății în ansamblul ei.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 mt-4 mt-md-0">
-                    <div class="icon-box">
-                        <i class="bi bi-bar-chart"></i>
-                        <h4><a href="#">Inovația</a></h4>
-                        <p>Suntem orientați spre inovație și căutăm constant modalități de a îmbunătăți serviciile noastre și de a răspunde nevoilor în schimbare ale clienților noștri.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 mt-4 mt-md-0">
-                    <div class="icon-box">
-                        <i class="bi bi-binoculars"></i>
-                        <h4><a href="#">Confidențialitate și securitate</a></h4>
-                        <p>Acordăm o atenție deosebită protejării datelor și informațiilor clienților noștri, asigurându-ne că acestea sunt întotdeauna securizate și confidențiale.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 mt-4 mt-md-0">
-                    <div class="icon-box">
-                        <i class="bi bi-brightness-high"></i>
-                        <h4><a href="#">Conexiunea umană</a></h4>
-                        <p>Ne angajăm să ne conectăm cu clienții noștri într-un mod personal și autentic, oferindu-le suport și îndrumare în fiecare etapă a relației lor cu noi.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 mt-4 mt-md-0">
-                    <div class="icon-box">
-                        <i class="bi bi-calendar4-week"></i>
-                        <h4><a href="#">Excelența</a></h4>
-                        <p>Ne străduim să oferim servicii de cea mai înaltă calitate și să depășim așteptările clienților noștri în fiecare interacțiune, căutând întotdeauna să ne perfecționăm și să ne îmbunătățim continuu.</p>
-                    </div>
-                </div>
-            </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0">
+                         <p>
+                              Iată ce vă oferim la Bad Bank:
+                         </p>
+                         <ul>
+                              <li><i class="ri-check-double-line"></i> <b>Produse bancare flexibile</b>: De la conturi de economii și de verificare la credite și împrumuturi, avem produse bancare care se potrivesc nevoilor dvs. unice.</li>
+                              <li><i class="ri-check-double-line"></i> <b>Experiență digitală de top:</b> Cu platforma noastră online și aplicația mobilă, puteți gestiona conturile dvs. și efectua tranzacții în orice moment și de oriunde, oferindu-vă libertatea și controlul asupra finanțelor dvs.</li>
+                              <li><i class="ri-check-double-line"></i> <b>Investiții inteligente:</b> Echipa noastră de experți vă poate ajuta să navigați în lumea investițiilor, oferindu-vă sfaturi și soluții personalizate pentru a vă ajuta să vă atingeți obiectivele financiare.</li>
 
-        </div>
-    </section><!-- End Services Section -->
-    <!-- ======= bad bank portofolio ======= -->
-    <section id="portfolio" class="portfolio">
-        <div class="container">
+                         </ul>
+                         <p class="fst-italic">
 
-            <div class="section-title">
-                <h2>Portofoliul nostru</h2>
-                <p>Ne mândrim cu parteneriatele noastre și cu proiectele pe care le-am realizat împreună.</p>
-            </div>
+                              Alăturați-vă nouă și descoperiți cum putem face lucruri extraordinare împreună.
+                         </p>
+                    </div>
+               </div>
 
-            <div class="row" data-aos="fade-up">
-                <div class="col-lg-12 d-flex justify-content-center">
-                    <ul id="portfolio-flters">
-                        <li data-filter="*" class="filter-active">Toate</li>
-                        <li data-filter=".filter-cashback">Cashback</li>
-                        <li data-filter=".filter-card">Carduri</li>
-                        <li data-filter=".filter-ipoteca">Ipotecă</li>
-                    </ul>
-                </div>
-            </div>
+          </div>
+     </section><!-- End About Section -->
+     <!-- ======= Clients Section ======= -->
+     <h2 class="text-center">Clienții noștri</h2>
 
-            <div class="row portfolio-container" data-aos="fade-up">
+     <section id="clients" class="clients section-bg">
+          <div class="container">
 
-                <div class="col-lg-4 col-md-6 portfolio-item filter-cashback">
-                    <img src="~/assets/img/portfolio/Cashback/electronica.png" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <h4>Produse Electronice</h4>
-                        <p>Programul de cashback pentru produse electronice vă permite să economisiți bani atunci când cumpărați echipamente și dispozitive electronice de ultimă generație. De la smartphone-uri și laptop-uri la televizoare și accesorii, puteți primi o parte din suma cheltuită înapoi pentru a vă bucura de tehnologie nouă la prețuri mai accesibile.e</p>
-                        <a href="~/assets/img/portfolio/Cashback/electronica.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="
+               <div class="row">
+
+                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                         <img src="~/assets/img/clients/UTM_LOGO.png" class="img-fluid" alt="">
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                         <img src="~/assets/img/clients/ROMPETROL_LOGO.png" class="img-fluid" alt="">
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                         <img src="~/assets/img/clients/UKR_LOGO.png" class="img-fluid" alt="">
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                         <img src="~/assets/img/clients/UN_LOGO.png" class="img-fluid" alt="">
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                         <img src="~/assets/img/clients/UNICEF_LOGO.png" class="img-fluid" alt="">
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                         <img src="~/assets/img/clients/NICKELODEON_LOGO.png" class="img-fluid" alt="">
+                    </div>
+
+               </div>
+
+          </div>
+     </section><!-- End Clients Section -->
+     <!-- ======= Services Section ======= -->
+     <section id="services" class="services">
+          <div class="container">
+
+               <div class="row">
+                    <div class="col-md-6">
+                         <div class="icon-box">
+                              <i class="bi bi-briefcase"></i>
+                              <h4><a href="#">Transparența</a></h4>
+                              <p>Ne angajăm să fim transparenți în toate aspectele relației noastre cu clienții, comunicând clar și onest despre produsele, serviciile și politica noastră.</p>
+                         </div>
+                    </div>
+                    <div class="col-md-6 mt-4 mt-md-0">
+                         <div class="icon-box">
+                              <i class="bi bi-card-checklist"></i>
+                              <h4><a href="#">Responsabilitate socială</a></h4>
+                              <p>Ne implicăm activ în comunitatea noastră și sprijinim proiecte și inițiative care aduc beneficii societății în ansamblul ei.</p>
+                         </div>
+                    </div>
+                    <div class="col-md-6 mt-4 mt-md-0">
+                         <div class="icon-box">
+                              <i class="bi bi-bar-chart"></i>
+                              <h4><a href="#">Inovația</a></h4>
+                              <p>Suntem orientați spre inovație și căutăm constant modalități de a îmbunătăți serviciile noastre și de a răspunde nevoilor în schimbare ale clienților noștri.</p>
+                         </div>
+                    </div>
+                    <div class="col-md-6 mt-4 mt-md-0">
+                         <div class="icon-box">
+                              <i class="bi bi-binoculars"></i>
+                              <h4><a href="#">Confidențialitate și securitate</a></h4>
+                              <p>Acordăm o atenție deosebită protejării datelor și informațiilor clienților noștri, asigurându-ne că acestea sunt întotdeauna securizate și confidențiale.</p>
+                         </div>
+                    </div>
+                    <div class="col-md-6 mt-4 mt-md-0">
+                         <div class="icon-box">
+                              <i class="bi bi-brightness-high"></i>
+                              <h4><a href="#">Conexiunea umană</a></h4>
+                              <p>Ne angajăm să ne conectăm cu clienții noștri într-un mod personal și autentic, oferindu-le suport și îndrumare în fiecare etapă a relației lor cu noi.</p>
+                         </div>
+                    </div>
+                    <div class="col-md-6 mt-4 mt-md-0">
+                         <div class="icon-box">
+                              <i class="bi bi-calendar4-week"></i>
+                              <h4><a href="#">Excelența</a></h4>
+                              <p>Ne străduim să oferim servicii de cea mai înaltă calitate și să depășim așteptările clienților noștri în fiecare interacțiune, căutând întotdeauna să ne perfecționăm și să ne îmbunătățim continuu.</p>
+                         </div>
+                    </div>
+               </div>
+
+          </div>
+     </section><!-- End Services Section -->
+     <!-- ======= bad bank portofolio ======= -->
+     <section id="portfolio" class="portfolio">
+          <div class="container">
+
+               <div class="section-title">
+                    <h2>Portofoliul nostru</h2>
+                    <p>Ne mândrim cu parteneriatele noastre și cu proiectele pe care le-am realizat împreună.</p>
+               </div>
+
+               <div class="row" data-aos="fade-up">
+                    <div class="col-lg-12 d-flex justify-content-center">
+                         <ul id="portfolio-flters">
+                              <li data-filter="*" class="filter-active">Toate</li>
+                              <li data-filter=".filter-cashback">Cashback</li>
+                              <li data-filter=".filter-card">Carduri</li>
+                              <li data-filter=".filter-ipoteca">Ipotecă</li>
+                         </ul>
+                    </div>
+               </div>
+
+               <div class="row portfolio-container" data-aos="fade-up">
+
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-cashback">
+                         <img src="~/assets/img/portfolio/Cashback/electronica.png" class="img-fluid" alt="">
+                         <div class="portfolio-info">
+                              <h4>Produse Electronice</h4>
+                              <p>Programul de cashback pentru produse electronice vă permite să economisiți bani atunci când cumpărați echipamente și dispozitive electronice de ultimă generație. De la smartphone-uri și laptop-uri la televizoare și accesorii, puteți primi o parte din suma cheltuită înapoi pentru a vă bucura de tehnologie nouă la prețuri mai accesibile.e</p>
+                              <a href="~/assets/img/portfolio/Cashback/electronica.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="
                            Cashback competitiv: Primește un cashback atractiv pentru toate achizițiile de produse electronice, inclusiv cele mai recente modele și branduri populare.
                            Promoții speciale: Beneficiați de oferte și promoții speciale exclusiv pentru clienții noștri, care vă pot aduce cashback suplimentar sau alte beneficii.
                            Flexibilitate: Nu există limitări în ceea ce privește tipul de produse electronice pentru care puteți primi cashback, astfel că puteți profita la maximum de achizițiile dumneavoastră.">
-                            <i class="bi bi-plus"></i>
-                        </a>
+                                   <i class="bi bi-plus"></i>
+                              </a>
+                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 portfolio-item filter-cashback">
-                    <img src="~/assets/img/portfolio/Cashback/food.png" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <h4>Produse Alimentare</h4>
-                        <p>Programul de cashback pentru produse alimentare vă oferă oportunitatea de a economisi bani în fiecare lună pe achizițiile de alimente de zi cu zi. Indiferent dacă faceți cumpărături la supermarket, în piață sau la magazine specializate, puteți primi o parte din suma cheltuită înapoi în contul dumneavoastră pentru a vă bucura de economii suplimentare.</p>
-                        <a href="~/assets/img/portfolio/Cashback/food.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-cashback">
+                         <img src="~/assets/img/portfolio/Cashback/food.png" class="img-fluid" alt="">
+                         <div class="portfolio-info">
+                              <h4>Produse Alimentare</h4>
+                              <p>Programul de cashback pentru produse alimentare vă oferă oportunitatea de a economisi bani în fiecare lună pe achizițiile de alimente de zi cu zi. Indiferent dacă faceți cumpărături la supermarket, în piață sau la magazine specializate, puteți primi o parte din suma cheltuită înapoi în contul dumneavoastră pentru a vă bucura de economii suplimentare.</p>
+                              <a href="~/assets/img/portfolio/Cashback/food.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="
                            Cashback generos: Beneficiați de o rată de cashback atractivă pentru toate achizițiile de produse alimentare, inclusiv alimente proaspete, conserve, produse de patiserie și multe altele.
                            Fără limitări: Nu există limite asupra sumei pe care o puteți primi înapoi, astfel că puteți economisi în mod constant pe achizițiile de alimente.
                            Proces simplu: Participarea la programul de cashback este simplă și fără complicații. Doar utilizați cardul dumneavoastră asociat și veți primi automat cashback-ul în contul dumneavoastră.">
-                            <i class="bi bi-plus"></i>
-                        </a>
+                                   <i class="bi bi-plus"></i>
+                              </a>
+                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 portfolio-item filter-cashback">
-                    <img src="~/assets/img/portfolio/Cashback/cultura.png" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <h4>Evenimente culturale</h4>
-                        <p> Programul de cashback pentru evenimente culturale vă oferă posibilitatea de a economisi bani atunci când participați la spectacole, concerte, expoziții și alte evenimente culturale. Indiferent dacă sunteți pasionat de teatru, muzică sau artă, puteți primi o parte din costul biletelor înapoi în contul dumneavoastră.</p>
-                        <a href="~/assets/img/portfolio/Cashback/cultura.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-cashback">
+                         <img src="~/assets/img/portfolio/Cashback/cultura.png" class="img-fluid" alt="">
+                         <div class="portfolio-info">
+                              <h4>Evenimente culturale</h4>
+                              <p> Programul de cashback pentru evenimente culturale vă oferă posibilitatea de a economisi bani atunci când participați la spectacole, concerte, expoziții și alte evenimente culturale. Indiferent dacă sunteți pasionat de teatru, muzică sau artă, puteți primi o parte din costul biletelor înapoi în contul dumneavoastră.</p>
+                              <a href="~/assets/img/portfolio/Cashback/cultura.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="
                            Cashback pentru toate evenimentele: Primește cashback pentru orice tip de eveniment cultural la care participați, inclusiv spectacole de teatru, concerte, festivaluri și alte activități culturale.
                            Flexibilitate în utilizare: Cashback-ul obținut poate fi folosit pentru a economisi la următoarele evenimente culturale sau pentru alte achiziții și cheltuieli, oferindu-vă libertate și flexibilitate în gestionarea economiilor dumneavoastră.">
-                            <i class="bi bi-plus"></i>
-                        </a>
+                                   <i class="bi bi-plus"></i>
+                              </a>
+                         </div>
                     </div>
-                </div>
 
-                <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                    <img src="~/assets/img/portfolio/Cards/Gold_card.png" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <h4>Card Gold</h4>
-                        <p>Cardul Gold reprezintă accesul la lumea elitistă a serviciilor financiare, oferindu-vă o experiență bancară fără egal. Cu un design elegant și rafinat, acest card este un simbol al statutului și al exclusivității. </p>
-                        <a href="~/assets/img/portfolio//Cards/Gold_card.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+                         <img src="~/assets/img/portfolio/Cards/Gold_card.png" class="img-fluid" alt="">
+                         <div class="portfolio-info">
+                              <h4>Card Gold</h4>
+                              <p>Cardul Gold reprezintă accesul la lumea elitistă a serviciilor financiare, oferindu-vă o experiență bancară fără egal. Cu un design elegant și rafinat, acest card este un simbol al statutului și al exclusivității. </p>
+                              <a href="~/assets/img/portfolio//Cards/Gold_card.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="
                            Beneficii principale:
                            Acces exclusiv la servicii premium și avantaje de lux.
                            Limită de credit ridicată pentru cheltuieli mai mari și flexibilitate financiară.
@@ -259,16 +261,16 @@
                            Protecție extinsă împotriva fraudei și a pierderii.
                            Acces la evenimente exclusiviste:
                            Invitații VIP la evenimente culturale, sportive și de divertisment.">
-                            <i class="bi bi-plus"></i>
-                        </a>
+                                   <i class="bi bi-plus"></i>
+                              </a>
+                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                    <img src="~/assets/img/portfolio/Cards/Pink_card.png" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <h4>Card Pink</h4>
-                        <p>Cardul Pink este alegerea ideală pentru cei care doresc să-și exprime personalitatea și stilul în fiecare tranzacție. Cu un design îndrăzneț și vibrant, acest card adaugă o notă de culoare și veselie în portofoliul dumneavoastră financiar. </p>
-                        <a href="~/assets/img/portfolio//Cards/Pink_card.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+                         <img src="~/assets/img/portfolio/Cards/Pink_card.png" class="img-fluid" alt="">
+                         <div class="portfolio-info">
+                              <h4>Card Pink</h4>
+                              <p>Cardul Pink este alegerea ideală pentru cei care doresc să-și exprime personalitatea și stilul în fiecare tranzacție. Cu un design îndrăzneț și vibrant, acest card adaugă o notă de culoare și veselie în portofoliul dumneavoastră financiar. </p>
+                              <a href="~/assets/img/portfolio//Cards/Pink_card.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="
                             Beneficii principale:
                             Cardul perfect pentru cei care apreciază stilul și individualitatea.
                             Design atractiv și unic în nuanțe de roz sau alte culori vibrante.
@@ -281,16 +283,16 @@
                             Asistență în caz de pierdere sau furt al cardului.
                             Stil personalizat:
                             Ocazional, oferim ediții limitate cu designuri unice și colecții tematice în ton cu moda actuală.">
-                            <i class="bi bi-plus"></i>
-                        </a>
+                                   <i class="bi bi-plus"></i>
+                              </a>
+                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                    <img src="~/assets/img/portfolio/Cards/Platinum_card.png" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <h4>Card Platinum</h4>
-                        <p>Cardul Platinum reprezintă rafinamentul și confortul, oferindu-vă acces la o gamă variată de servicii premium și avantaje exclusiviste. Cu un design distinctiv și atemporal, acest card emană eleganță și încredere.</p>
-                        <a href="~/assets/img/portfolio//Cards/Platinum_card.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+                         <img src="~/assets/img/portfolio/Cards/Platinum_card.png" class="img-fluid" alt="">
+                         <div class="portfolio-info">
+                              <h4>Card Platinum</h4>
+                              <p>Cardul Platinum reprezintă rafinamentul și confortul, oferindu-vă acces la o gamă variată de servicii premium și avantaje exclusiviste. Cu un design distinctiv și atemporal, acest card emană eleganță și încredere.</p>
+                              <a href="~/assets/img/portfolio//Cards/Platinum_card.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="
                             Beneficii principale:
                             Acces la servicii bancare premium și asistență personalizată.
                             Limită de credit competitivă și flexibilitate financiară.
@@ -303,16 +305,16 @@
                             Asistență în caz de urgențe și asistență medicală la nivel mondial.
                             Experiențe premium:
                             Invitații la evenimente speciale și experiențe culturale.">
-                            <i class="bi bi-plus"></i>
-                        </a>
+                                   <i class="bi bi-plus"></i>
+                              </a>
+                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                    <img src="~/assets/img/portfolio/Cards/Silver_card.png" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <h4>Card Silver</h4>
-                        <p>Cardul Silver este alegerea perfectă pentru cei care apreciază simplitatea și utilitatea în serviciile bancare. Cu un design modern și funcțional, acest card se integrează perfect în stilul de viață urban, oferindu-vă acces la o gamă variată de beneficii și servicii esențiale.</p>
-                        <a href="~/assets/img/portfolio//Cards/Silver_card.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+                         <img src="~/assets/img/portfolio/Cards/Silver_card.png" class="img-fluid" alt="">
+                         <div class="portfolio-info">
+                              <h4>Card Silver</h4>
+                              <p>Cardul Silver este alegerea perfectă pentru cei care apreciază simplitatea și utilitatea în serviciile bancare. Cu un design modern și funcțional, acest card se integrează perfect în stilul de viață urban, oferindu-vă acces la o gamă variată de beneficii și servicii esențiale.</p>
+                              <a href="~/assets/img/portfolio//Cards/Silver_card.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="
                             Beneficii principale:
                             Acces la o gamă variată de servicii bancare convenabile și utile.
                             Limită de credit adecvată pentru nevoile dumneavoastră financiare.
@@ -325,17 +327,17 @@
                             Protecție împotriva tranzacțiilor frauduloase.
                             Acces la evenimente locale:
                             Invitații la evenimente și promoții speciale în comunitatea locală.">
-                            <i class="bi bi-plus"></i>
-                        </a>
+                                   <i class="bi bi-plus"></i>
+                              </a>
+                         </div>
                     </div>
-                </div>
 
-                <div class="col-lg-4 col-md-6 portfolio-item filter-ipoteca">
-                    <img src="~/assets/img/portfolio/ipoteca.png" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <h4>Ipotecă</h4>
-                        <p>Ipoteca de la Bad Bank este soluția perfectă pentru cei care își doresc să își transforme visul de a deveni proprietari de casă în realitate. Cu condiții flexibile și avantaje competitive, ipoteca noastră vă oferă oportunitatea de a achiziționa sau refinanța locuința dorită, oferindu-vă liniștea și siguranța pe termen lung.</p>
-                        <a href="~/assets/img/portfolio/ipoteca.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-ipoteca">
+                         <img src="~/assets/img/portfolio/ipoteca.png" class="img-fluid" alt="">
+                         <div class="portfolio-info">
+                              <h4>Ipotecă</h4>
+                              <p>Ipoteca de la Bad Bank este soluția perfectă pentru cei care își doresc să își transforme visul de a deveni proprietari de casă în realitate. Cu condiții flexibile și avantaje competitive, ipoteca noastră vă oferă oportunitatea de a achiziționa sau refinanța locuința dorită, oferindu-vă liniștea și siguranța pe termen lung.</p>
+                              <a href="~/assets/img/portfolio/ipoteca.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="
                             Caracteristici principale:
                             Dobândă competitivă: Beneficiați de rate de dobândă competitive și stabile, adaptate nevoilor dumneavoastră financiare.
                             Flexibilitate în termeni: Oferim o gamă variată de opțiuni de plată și termeni flexibili pentru a vă ajuta să găsiți soluția potrivită pentru bugetul și planurile dumneavoastră.
@@ -347,14 +349,14 @@
                             Posibilitatea de refinanțare: Dacă aveți deja o ipotecă, vă oferim opțiunea de refinanțare pentru a vă optimiza costurile și a vă consolida finanțele.
                             Acces la resurse și instrumente utile: Prin intermediul platformei noastre online și al serviciilor mobile, aveți acces la resurse și instrumente utile pentru gestionarea eficientă a ipotecii dumneavoastră.
                             La Bad Bank, înțelegem că achiziționarea sau refinanțarea unei case poate fi una dintre cele mai importante decizii financiare pe care le luați. De aceea, suntem aici pentru a vă oferi suportul și resursele de care aveți nevoie pentru a face această călătorie cât mai ușoară și lipsită de griji posibil. Alegeți ipoteca de la Bad Bank și transformați visul dumneavoastră în realitate!">
-                            <i class="bi bi-plus"></i>
-                        </a>
-                    </div>
+                                   <i class="bi bi-plus"></i>
+                              </a>
+                         </div>
 
-                </div>
-            </div>
-        </div>
-    </section><!-- End Portfolio Section -->
+                    </div>
+               </div>
+          </div>
+     </section><!-- End Portfolio Section -->
 
 
 </main><!-- End #main -->

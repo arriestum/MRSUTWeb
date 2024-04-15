@@ -1,0 +1,23 @@
+﻿
+@{
+     ViewBag.Title = "LogIn";
+     Layout = "~/Views/Shared/_LayoutWithUser.cshtml";
+}
+
+<main id="main">
+     <br/><br/>
+     <section id="terms-and-conditions" class="terms-and-conditions">
+          <div class="container-login">
+               <h1>Logare</h1>
+               <input type="text" class="login" placeholder="Nume de utilizator"><br />
+               <input type="password" class="password" placeholder="Parola"><br/>
+               
+
+               <button class="LogInButton" id="LogInButton" onclick="redirectToPage()">Logare</button>
+
+               <p><br />@Html.ActionLink("Ati uitat parola?", "ForgetPass", "Login")</p>
+          </div>
+     </section>
+    
+
+</main><!-- End #main -->
