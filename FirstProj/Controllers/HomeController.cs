@@ -45,9 +45,6 @@ namespace FirstProj.Controllers
         {
             return View();
         }
-        public ActionResult LogIn()
-        {
-            return View();
-        }
+        
     }
 }

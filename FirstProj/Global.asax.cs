@@ -17,7 +17,7 @@ namespace FirstProj
            AreaRegistration.RegisterAllAreas();
            RouteConfig.RegisterRoutes(RouteTable.Routes);
 
-           RouteConfig.RegisterBundles(BundleTable.Bundles);
+           BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
     }
 }
