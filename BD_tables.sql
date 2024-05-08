@@ -1,4 +1,4 @@
-﻿USE MASTER
+USE MASTER
 GO
 IF EXISTS(SELECT * FROM sys.databases WHERE NAME='MRSUTWeb')
 BEGIN
@@ -17,7 +17,8 @@ CREATE TABLE [dbo].[Userr](
 [Name]	[nvarchar](50) NOT NULL,
 [Surname]	[nvarchar](50) NOT NULL,
 [Username]	[nvarchar](50) NOT NULL,
-[Password]	[nvarchar](50) NOT NULL,
+[Hash_Password]	[nvarchar](256) NOT NULL,
+[Salt] [nvarchar](50) NOT NULL,
 [Email]		[nvarchar](50) NOT NULL,
 [LastLogin]	[datetime] NOT NULL,
 [LastIp]	[nvarchar](30) NOT NULL
@@ -29,8 +30,10 @@ CREATE TABLE [dbo].[Temp_Userr](
 [Name]	[nvarchar](50) NOT NULL,
 [Surname]	[nvarchar](50) NOT NULL,
 [Username]	[nvarchar](50) NOT NULL,
-[Password]	[nvarchar](50) NOT NULL,
-[Email]		[nvarchar](50) NOT NULL
+[Hash_Password]	[nvarchar](256) NOT NULL,
+[Salt] [nvarchar](50) NOT NULL,
+[Email]		[nvarchar](50) NOT NULL,
+[Code] [varchar](6) NOT NULL
 )
 
 
@@ -84,16 +87,17 @@ CREATE PROCEDURE InsertTempUser
     @Name NVARCHAR(50),
     @Surname NVARCHAR(50),
     @Username NVARCHAR(50),
-    @Password NVARCHAR(50),
-    @Email NVARCHAR(50)
+    @Hash_Password NVARCHAR(256),
+	@Salt NVARCHAR(50),
+    @Email NVARCHAR(50),
+	@Code VARCHAR(6)
 )
 AS
 BEGIN
     SET NOCOUNT ON;
     
-    INSERT INTO Temp_Userr (ID_User, Name, Surname, Username, Password, Email)
-    VALUES (@ID_User, @Name, @Surname, @Username, @Password, @Email);
+    INSERT INTO Temp_Userr (ID_User, Name, Surname, Username, Hash_Password, Salt, Email, Code)
+    VALUES (@ID_User, @Name, @Surname, @Username, @Hash_Password, @Salt, @Email, @Code);
 END;
-
 
 
