@@ -15,5 +15,13 @@ namespace MRSUTWeb.BusinessLogic
         {
             return UserLogin(data);
         }
+        public void Insert_RegisterUserAction(URegister register)
+        {
+            RegisterUserAction(register);
+        }
+        public void SendEmail_Register(URegister register)
+        {
+            SendEmail(register);
+        }
     }
 }
