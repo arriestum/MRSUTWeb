@@ -14,7 +14,9 @@ namespace MRSUTWeb.BusinessLogic
             return new SessionBL();
         }
 
-
+        public ISession GetSessionAdminBL()
+        {
+            return null;
+        }
     }
-
 }

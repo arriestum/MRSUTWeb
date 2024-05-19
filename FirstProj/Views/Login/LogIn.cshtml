@@ -1,24 +1,30 @@
-﻿
-@{
+﻿@{
      ViewBag.Title = "LogIn";
      Layout = "~/Views/Shared/_LayoutWithUser.cshtml";
 }
 
+@model MRSUTWeb.Web.Models.UserLogin
+
 <main id="main">
-     <br/><br/>
+     <br /><br />
      <section id="terms-and-conditions" class="terms-and-conditions">
           <div class="container-login">
                <h1>Logare</h1>
-               <input type="text" class="login" placeholder="Nume de utilizator"><br />
-               <input type="password" class="password" placeholder="Parola"><br/>
-               
-
-               <button class="LogInButton" id="LogInButton" onclick="redirectToPage()">Logare</button>
-
-               <p><br />@Html.ActionLink("Ati uitat parola?", "ForgetPass", "Login")</p>
-              <p><br />@Html.ActionLink("Nu aveți cont?", "NewUser", "Register")</p>
           </div>
+          @using (Html.BeginForm("Index", "Login", FormMethod.Post))
+          {
+               @Html.AntiForgeryToken()
+               <div class="form-group">
+                    <label>Login</label>
+                    @Html.TextBoxFor(model => model.Username, new { @class = "form-control" })
+               </div>
+               <div class="form-group">
+                    <label>Parola</label>
+                    @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+               </div>
+               <button type="submit" class="btn btn-primary">Logare</button>
+          }
+          <p><br />@Html.ActionLink("Ați uitat parola?", "ForgetPass", "Login")</p>
+          <p><br />@Html.ActionLink("Nu aveți cont?", "NewUser", "Register")</p>
      </section>
-    
-
 </main><!-- End #main -->

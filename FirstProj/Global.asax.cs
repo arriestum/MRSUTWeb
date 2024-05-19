@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
+using MRSUTWeb.BusinessLogic.DBModel;
 
 namespace FirstProj
 {
@@ -18,6 +20,8 @@ namespace FirstProj
            RouteConfig.RegisterRoutes(RouteTable.Routes);
 
            BundleConfig.RegisterBundles(BundleTable.Bundles);
+           Database.SetInitializer<UserContext>(new DropCreateDatabaseIfModelChanges<UserContext>());
+
         }
     }
 }

@@ -9,12 +9,13 @@ using MRSUTWeb.Domain.Entities.User;
 
 namespace MRSUTWeb.BusinessLogic.DBModel
 {
-    class UserContext : DbContext
+    public class UserContext : DbContext   
     {
         public UserContext() : base("name=MRSUTWeb")//string conectare la baza de date in web.config
         {
         }
 
         public DbSet<UDbTable> Users { get; set; }
+        public DbSet<Session> Sessions { get; set; }
     }
 }
