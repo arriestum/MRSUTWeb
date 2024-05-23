@@ -1,30 +1,87 @@
 ﻿@{
-     ViewBag.Title = "LogIn";
-     Layout = "~/Views/Shared/_LayoutWithUser.cshtml";
+    ViewBag.Title = "LogIn";
+    Layout = "~/Views/Shared/_LayoutWithUser.cshtml";
 }
 
 @model MRSUTWeb.Web.Models.UserLogin
 
-<main id="main">
-     <br /><br />
-     <section id="terms-and-conditions" class="terms-and-conditions">
-          <div class="container-login">
-               <h1>Logare</h1>
-          </div>
-          @using (Html.BeginForm("Index", "Login", FormMethod.Post))
-          {
-               @Html.AntiForgeryToken()
-               <div class="form-group">
-                    <label>Login</label>
-                    @Html.TextBoxFor(model => model.Username, new { @class = "form-control" })
-               </div>
-               <div class="form-group">
-                    <label>Parola</label>
-                    @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
-               </div>
-               <button type="submit" class="btn btn-primary">Logare</button>
-          }
-          <p><br />@Html.ActionLink("Ați uitat parola?", "ForgetPass", "Login")</p>
-          <p><br />@Html.ActionLink("Nu aveți cont?", "NewUser", "Register")</p>
-     </section>
-</main><!-- End #main -->
+<style>
+    .panel {
+        max-width: 400px;
+        margin: 0 auto;
+        margin-top: 50px;
+    }
+
+    .panel-heading {
+        text-align: center;
+    }
+
+    .panel-body {
+        padding: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .login {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+        .login:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+</style>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Logare utilizator</h2>
+                </div>
+                <div class="panel-body">
+                    @if (!String.IsNullOrEmpty(ViewBag.Message))
+                    {
+                        <div class="alert alert-danger">@ViewBag.Message</div>
+                    }
+                    else
+                    {
+                        using (Html.BeginForm("Index", "Login", FormMethod.Post, new { @class = "form-horizontal" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="form-group" style="margin-bottom: 15px;">
+                                @Html.LabelFor(m => m.Username, new { @class = "control-label" })
+                                <div style="margin: 15px;">
+                                    @Html.EditorFor(m => m.Username, new { htmlAttributes = new { @class = "form-control", style = "width: 300px; padding: 10px;" } })
+                                    @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div style="margin-bottom: 15px; margin-right: 30px;">
+                                    @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+                                    @Html.EditorFor(m => m.Password, new { htmlAttributes = new { @class = "form-control", maxlength = 50, style = "padding: 10px;" } })
+                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-primary btn-block login">Logare</button>
+                                </div>
+                            </div>
+                        }
+                    }
+                    <p><br />@Html.ActionLink("Ați uitat parola?", "ForgetPass", "Login")</p>
+                    <p>@Html.ActionLink("Nu aveți cont?", "NewUser", "Register")</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
