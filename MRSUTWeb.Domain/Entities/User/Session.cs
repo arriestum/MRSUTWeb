@@ -12,14 +12,14 @@ namespace MRSUTWeb.Domain.Entities.User
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID_User { get; set; }
+        public int ID_Session { get; set; }
         [Required]
         [ForeignKey("Users")]
-        public int UserId { get; set; }
+        public int ID_User { get; set; }
         [Required]
-        public string CookieString { get; set; }
+        public string SessionToken { get; set; }
         [Required]
-        public DateTime ExpireTime { get; set; }
+        public DateTime ExpiryDateTime { get; set; }
         public virtual UDbTable Users { get; set; }
     }
 }

@@ -24,8 +24,20 @@
             //GET: Login
             public ActionResult LogIn()
             {
-                return View();
+            var xKeyCookie = Request.Cookies["X-KEY"];
+            if (xKeyCookie != null)
+            {
+                var user = _session.GetUserByCookie(xKeyCookie.Value);
+                if (user != null)
+                {
+                    ViewBag.UserRole = user.Level;
+                    return RedirectToAction("LogedUserHome", "LogedHome");
+                }
             }
+            
+        return View();
+
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Index(MRSUTWeb.Web.Models.UserLogin login)
@@ -52,10 +64,8 @@
                     ModelState.AddModelError("", userLogin.StatusMsg);
                 }
             }
-            
             return View("LogIn", login);
         }
-
 
         public UserMinimal GetUserDetails(string authToken)
             {

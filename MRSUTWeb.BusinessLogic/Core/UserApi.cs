@@ -81,24 +81,30 @@ namespace MRSUTWeb.BusinessLogic.Core
                             if (password == hashPassword)
                             {
                                 loginResp.Status = true;
-                                loginResp.StatusMsg = "Login successful";
+                                loginResp.StatusMsg = "Logare reușită";
+
+                                
+                                HttpCookie cookie = GenerateAuthCookie(userLoginData.Username);
+                                HttpContext.Current.Response.Cookies.Add(cookie);
                             }
                             else
                             {
                                 loginResp.Status = false;
-                                loginResp.StatusMsg = "Invalid password";
+                                loginResp.StatusMsg = "Parolă invalidă";
                             }
                         }
                         else
                         {
                             loginResp.Status = false;
-                            loginResp.StatusMsg = "Invalid username";
+                            loginResp.StatusMsg = "Nume de utilizator invalid";
                         }
                     }
                 }
             }
             return loginResp;
         }
+
+
 
         internal HttpCookie GenerateAuthCookie(string loginCredential)
         {
@@ -108,38 +114,34 @@ namespace MRSUTWeb.BusinessLogic.Core
                 Expires = DateTime.Now.AddHours(3)
             };
             using (var db = new UserContext())
-            { 
-            UDbTable currentUser = null;
-                var validate = db.Users.FirstOrDefault(x => x.Username == loginCredential);
-
-                if (validate != null) 
-                {
-                    currentUser = db.Users.FirstOrDefault(x => x.Username == loginCredential);
-                }
-
+            {
+                UDbTable currentUser = db.Users.FirstOrDefault(x => x.Username == loginCredential);
 
                 if (currentUser != null)
                 {
-                    var currentSession = db.Sessions.FirstOrDefault(x => x.UserId == currentUser.ID_User);
+                    var currentSession = db.Sessions.FirstOrDefault(x => x.ID_User == currentUser.ID_User);
                     if (currentSession != null)
                     {
-                        currentSession.CookieString = apiCookie.Value;
-                        db.SaveChanges();
+                        currentSession.SessionToken = apiCookie.Value;
+                        currentSession.ExpiryDateTime = DateTime.Now.AddHours(3);
                     }
                     else
                     {
                         db.Sessions.Add(new Session
                         {
-                            UserId = currentUser.ID_User,
-                            CookieString = apiCookie.Value,
-                            ExpireTime = DateTime.Now.AddHours(3)
+                            ID_User = currentUser.ID_User,
+                            SessionToken = apiCookie.Value,
+                            ExpiryDateTime = DateTime.Now.AddHours(3)
                         });
-                        db.SaveChanges();
-                    }   
+                    }
+                    db.SaveChanges();
                 }
             }
             return apiCookie;
         }
+
+
+
         internal UserMinimal UserCookie(string cookie)
         {
             Session session;
@@ -147,23 +149,24 @@ namespace MRSUTWeb.BusinessLogic.Core
 
             using (var db = new UserContext())
             {
-                session = db.Sessions.FirstOrDefault(s => s.CookieString == cookie && s.ExpireTime > DateTime.Now);
+                session = db.Sessions.FirstOrDefault(s => s.SessionToken == cookie && s.ExpiryDateTime > DateTime.Now);
             }
 
-            if (session == null) return null; // If the session does not exist or is expired, return null
+            if (session == null) return null; 
 
             using (var db = new UserContext())
             {
-                currentUser = db.Users.FirstOrDefault(u => u.ID_User == session.UserId);
+                currentUser = db.Users.FirstOrDefault(u => u.ID_User == session.ID_User);
             }
 
-            if (currentUser == null) return null; // If the user does not exist, return null
+            if (currentUser == null) return null; 
 
             var config = new MapperConfiguration(cfg => cfg.CreateMap<UDbTable, UserMinimal>());
             var mapper = config.CreateMapper();
             var userminimal = mapper.Map<UserMinimal>(currentUser);
 
-            return userminimal; // Return the UserMinimal object if the cookie is valid
+            return userminimal; 
         }
+
     }
 }

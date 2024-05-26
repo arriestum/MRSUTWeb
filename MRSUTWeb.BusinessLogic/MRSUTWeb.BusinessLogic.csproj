@@ -56,7 +56,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessLogic.cs" />
-    <Compile Include="DBModel\UserContext.cs" />
+    <Compile Include="DBModel\Seed\SessionContext.cs" />
+    <Compile Include="DBModel\Seed\UserContext.cs" />
     <Compile Include="Interfaces\ISession.cs" />
     <Compile Include="SessionBL.cs" />
     <Compile Include="Core\AdminApi.cs" />
@@ -73,9 +74,7 @@
       <Name>MRSUTWeb.Helpers</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DBModel\Seed\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
