@@ -268,6 +268,7 @@
     <Content Include="Views\Register\NewUser.cshtml" />
     <Content Include="Views\LogedUserHome\LogedHome.cshtml" />
     <Content Include="Views\LogedUserHome\AdminHome.cshtml" />
+    <Content Include="Views\LogedUserHome\ClientHome.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
