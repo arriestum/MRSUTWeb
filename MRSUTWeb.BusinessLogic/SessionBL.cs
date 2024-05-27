@@ -24,9 +24,9 @@ namespace MRSUTWeb.BusinessLogic
         {
             RegisterUserAction(register);
         }
-        public void SendEmail_Register(URegister register)
+        public void SendEmail_Register(URegister register, string code)
         {
-            SendEmail(register);
+            SendEmail(register,code);
         }
         public HttpCookie GenCookie(string loginCredential)
         {

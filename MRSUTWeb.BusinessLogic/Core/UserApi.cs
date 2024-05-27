@@ -9,42 +9,62 @@ using MRSUTWeb.BusinessLogic.DBModel;
 using System.Linq;
 using MRSUTWeb.Domain.Enums;
 using AutoMapper;
+using System.ComponentModel.DataAnnotations;
 
 
 namespace MRSUTWeb.BusinessLogic.Core
 {
     public class UserApi
     {
-        string salt = HashSaltGenerate.GenerateSalt();
-        string code = HashSaltGenerate.GeneraterRandomCode();
+
+
 
         internal URegister RegisterUserAction(URegister register)
         {
-
-
+            string salt = HashSaltGenerate.GenerateSalt();
+            string code = HashSaltGenerate.GeneraterRandomCode();
             string hashPassword = HashSaltGenerate.HashPasswordWithSalt(register.Password, salt);
-            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=MRSUTWeb;Integrated Security=True";
-            string query = "INSERT INTO Userr (Name, Surname, Username, Email, Hash_Password, Salt, Code, ID_Type_user) VALUES (@Name, @Surname, @Username, @Email, @Hash_Password, @Salt, @Code, @ID_Type_user)";
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            UDbTable existingEmail;
+            UDbTable existingUsername;
+            var validate = new EmailAddressAttribute();
+            if (validate.IsValid(register.Email))
             {
-                using (SqlCommand command = new SqlCommand(query, connection))
+                //check if email exists
+                //using (var db = new UserContext())
+                //{
+                //    existingEmail = db.Userr.FirstOrDefault(x => x.Email == register.Email);
+                //    existingUsername = db.Userr.FirstOrDefault(x => x.Username == register.Username);
+
+                //}
+                //if (existingEmail != null)
+                //{
+                //    throw new Exception("Email already exists");
+                //}
+
+                var newuser = new UDbTable
+               {
+                    Name = register.Name,
+                    Surname = register.Surname,
+                    Username = register.Username,
+                    Email = register.Email,
+                    Password = hashPassword,
+                    Salt = salt,
+                    Code = code,
+                    ID_Type_user = 1
+                };
+                using (var db = new UserContext())
                 {
-                    command.Parameters.AddWithValue("@ID_User", register.Id);
-                    command.Parameters.AddWithValue("@ID_Type_user", 1);
-                    command.Parameters.AddWithValue("@Name", register.Name);
-                    command.Parameters.AddWithValue("@Surname", register.Surname);
-                    command.Parameters.AddWithValue("@Username", register.Username);
-                    command.Parameters.AddWithValue("@Email", register.Email);
-                    command.Parameters.AddWithValue("@Hash_Password", hashPassword);
-                    command.Parameters.AddWithValue("@Salt", salt);
-                    command.Parameters.AddWithValue("@Code", code);
-                    connection.Open();
-                    command.ExecuteNonQuery();
+                    db.Userr.Add(newuser);
+                    db.SaveChanges();
                 }
+
             }
+
+
+            SendEmail(register, code);
             return register;
         }
-        internal void SendEmail(URegister register)
+        internal void SendEmail(URegister register, string code)
         {
             // Send email to the user
             MailMessage mail = new MailMessage("madarableach55@gmail.com", register.Email);
@@ -58,49 +78,34 @@ namespace MRSUTWeb.BusinessLogic.Core
             smtp.Credentials = new NetworkCredential("madarableach55@gmail.com", "nhrjcgocqzznmove");//ascundeti parola
             smtp.EnableSsl = true;
             smtp.Send(mail);
-            
+
         }
         internal ULoginResp UserLoginAction(ULoginData userLoginData)
         {
             ULoginResp loginResp = new ULoginResp();
-            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=MRSUTWeb;Integrated Security=True";
-            string query = "SELECT * FROM Userr WHERE Username = @Username";
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            string salt;
+            using (var db = new UserContext())
             {
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@Username", userLoginData.Username);
-                    connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            string salt = reader["Salt"].ToString();
-                            string hashPassword = reader["Hash_Password"].ToString();
-                            string password = HashSaltGenerate.HashPasswordWithSalt(userLoginData.Password, salt);
-                            if (password == hashPassword)
-                            {
-                                loginResp.Status = true;
-                                loginResp.StatusMsg = "Logare reușită";
-
-                                
-                                HttpCookie cookie = GenerateAuthCookie(userLoginData.Username);
-                                HttpContext.Current.Response.Cookies.Add(cookie);
-                            }
-                            else
-                            {
-                                loginResp.Status = false;
-                                loginResp.StatusMsg = "Parolă invalidă";
-                            }
-                        }
-                        else
-                        {
-                            loginResp.Status = false;
-                            loginResp.StatusMsg = "Nume de utilizator invalid";
-                        }
-                    }
-                }
+                salt = db.Userr.FirstOrDefault(x => x.Username == userLoginData.Username).Salt;
             }
+            var hashPassword = HashSaltGenerate.HashPasswordWithSalt(userLoginData.Password, salt);
+            UDbTable user;
+            using (var db = new UserContext())
+            {
+                user = db.Userr.FirstOrDefault(x => x.Username == userLoginData.Username && x.Password == hashPassword);
+            }
+            if (user != null)
+            {
+                loginResp.Status = true;
+                loginResp.StatusMsg = "Login successful";
+            }
+            else
+            {
+                loginResp.Status = false;
+                loginResp.StatusMsg = "Login failed";
+            }
+
+
             return loginResp;
         }
 
@@ -115,7 +120,7 @@ namespace MRSUTWeb.BusinessLogic.Core
             };
             using (var db = new UserContext())
             {
-                UDbTable currentUser = db.Users.FirstOrDefault(x => x.Username == loginCredential);
+                UDbTable currentUser = db.Userr.FirstOrDefault(x => x.Username == loginCredential);
 
                 if (currentUser != null)
                 {
@@ -152,21 +157,22 @@ namespace MRSUTWeb.BusinessLogic.Core
                 session = db.Sessions.FirstOrDefault(s => s.SessionToken == cookie && s.ExpiryDateTime > DateTime.Now);
             }
 
-            if (session == null) return null; 
+            if (session == null) return null;
 
             using (var db = new UserContext())
             {
-                currentUser = db.Users.FirstOrDefault(u => u.ID_User == session.ID_User);
+                currentUser = db.Userr.FirstOrDefault(u => u.ID_User == session.ID_User);
             }
 
-            if (currentUser == null) return null; 
+            if (currentUser == null) return null;
 
             var config = new MapperConfiguration(cfg => cfg.CreateMap<UDbTable, UserMinimal>());
             var mapper = config.CreateMapper();
             var userminimal = mapper.Map<UserMinimal>(currentUser);
 
-            return userminimal; 
+            return userminimal;
         }
+
 
     }
 }

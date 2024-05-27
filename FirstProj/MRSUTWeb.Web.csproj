@@ -107,10 +107,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\MRSUTWeb.mdf" />
-    <Content Include="App_Data\MRSUTWeb_log.ldf">
-      <DependentUpon>MRSUTWeb.mdf</DependentUpon>
-    </Content>
     <Content Include="assets\css\style.css" />
     <Content Include="assets\img\apple-touch-icon.png" />
     <Content Include="assets\img\badbank1.png" />
@@ -279,6 +275,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Content\" />
     <Folder Include="Views\Email_Setup\" />
   </ItemGroup>

@@ -13,7 +13,7 @@ namespace MRSUTWeb.Domain.Entities.User
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int ID_User { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]

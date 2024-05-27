@@ -48,7 +48,7 @@ namespace FirstProj.Controllers
                     Password = register.Password
                 };
                 _session.Insert_RegisterUserAction(newUser);
-                _session.SendEmail_Register(newUser);
+                //_session.SendEmail_Register(newUser);
 
                 ViewBag.Message = "User registered successfully";
                 

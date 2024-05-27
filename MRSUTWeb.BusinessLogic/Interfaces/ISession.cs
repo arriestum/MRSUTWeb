@@ -13,7 +13,7 @@ namespace MRSUTWeb.BusinessLogic.Interfaces
         UserMinimal GetUserByCookie(string cookie);
         ULoginResp UserLogin(ULoginData data);
         void Insert_RegisterUserAction(URegister register);
-        void SendEmail_Register(URegister register);
+        void SendEmail_Register(URegister register, string code);
         HttpCookie GenCookie(string loginCredential);
     }
 }

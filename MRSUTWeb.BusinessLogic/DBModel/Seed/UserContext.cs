@@ -15,7 +15,7 @@ namespace MRSUTWeb.BusinessLogic.DBModel
         {
         }
 
-        public DbSet<UDbTable> Users { get; set; }
-        public DbSet<Session> Sessions { get; set; }
+        public virtual DbSet<UDbTable> Userr { get; set; }
+        public virtual DbSet<Session> Sessions { get; set; }
     }
 }
