@@ -33,7 +33,10 @@ namespace MRSUTWeb.Web.Controllers
             return View();
         }
         
-
+        public ActionResult AdminHome()
+        {
+            return View();
+        }
     }
 }
 
