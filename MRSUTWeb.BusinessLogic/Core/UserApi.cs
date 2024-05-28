@@ -10,6 +10,7 @@ using System.Linq;
 using MRSUTWeb.Domain.Enums;
 using AutoMapper;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.Win32;
 
 
 namespace MRSUTWeb.BusinessLogic.Core
@@ -42,7 +43,7 @@ namespace MRSUTWeb.BusinessLogic.Core
                 //}
 
                 var newuser = new UDbTable
-               {
+                {
                     Name = register.Name,
                     Surname = register.Surname,
                     Username = register.Username,
@@ -68,8 +69,8 @@ namespace MRSUTWeb.BusinessLogic.Core
         {
             // Send email to the user
             MailMessage mail = new MailMessage("madarableach55@gmail.com", register.Email);
-            mail.Subject = "Confirm your email";
-            mail.Body = "Your confirmation code is: " + code;
+            mail.Subject = "Confirmare cont";
+            mail.Body = "Codul tau de confirmare a contului BadBank: " + code;
             mail.IsBodyHtml = true;
             SmtpClient smtp = new SmtpClient();
             smtp.UseDefaultCredentials = false;
@@ -80,12 +81,87 @@ namespace MRSUTWeb.BusinessLogic.Core
             smtp.Send(mail);
 
         }
+
+        public void SendEmail_ResetPassword(string email, string code)
+        {
+            // Send email to the user
+            MailMessage mail = new MailMessage("madarableach55@gmail.com", email);
+            mail.Subject = "Restabilire parola";
+            mail.Body = "Codul pentru restabilire a parolei de la contul BadBank: " + code;
+            mail.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient();
+            smtp.UseDefaultCredentials = false;
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.Credentials = new NetworkCredential("madarableach55@gmail.com", "nhrjcgocqzznmove");
+            smtp.EnableSsl = true;
+            smtp.Send(mail);
+        }
+
+
+
+        public void SendResetCode(string username)
+        {
+            // Generare și salvare cod resetare în baza de date
+            string code = HashSaltGenerate.GeneraterRandomCode();
+            using (var db = new UserContext())
+            {
+                var user = db.Userr.FirstOrDefault(u => u.Username == username);
+                if (user != null)
+                {
+                    user.ResetPasswordCode = code;
+                    db.SaveChanges();
+
+                    // Trimitere cod de resetare prin email
+                    SendEmail_ResetPassword(user.Email, code);
+                }
+            }
+        }
+
+
+
+        public void ResetPassword(string username, string code, string newPassword)
+        {
+            using (var db = new UserContext())
+            {
+                var user = db.Userr.FirstOrDefault(u => u.Username == username && u.ResetPasswordCode.Equals(code, StringComparison.OrdinalIgnoreCase));
+                if (user != null)
+                {
+                    string salt = HashSaltGenerate.GenerateSalt();
+                    string hashPassword = HashSaltGenerate.HashPasswordWithSalt(newPassword, salt);
+                    user.Password = hashPassword;
+                    user.Salt = salt;
+                    user.ResetPasswordCode = null;
+                    db.SaveChanges();
+                }
+            }
+        }
+
+        public bool VerifyResetCode(string username, string code)
+        {
+            using (var db = new UserContext())
+            {
+                var user = db.Userr.FirstOrDefault(u => u.Username == username && u.ResetPasswordCode == code);
+                return user != null;
+            }
+        }
+
+
+
+
         internal ULoginResp UserLoginAction(ULoginData userLoginData)
         {
             ULoginResp loginResp = new ULoginResp();
             string salt;
             using (var db = new UserContext())
             {
+
+                if (db.Userr.FirstOrDefault(x => x.Username == userLoginData.Username) == null)
+                {
+                    loginResp.Status = false;
+                    loginResp.StatusMsg = "Login failed";
+                    return loginResp;
+                }
                 salt = db.Userr.FirstOrDefault(x => x.Username == userLoginData.Username).Salt;
             }
             var hashPassword = HashSaltGenerate.HashPasswordWithSalt(userLoginData.Password, salt);

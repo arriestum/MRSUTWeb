@@ -196,6 +196,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ForgetPasswordController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LogedUserHome.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -204,6 +205,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Mail.cs" />
+    <Compile Include="Models\ResetPasswordViewModel.cs" />
     <Compile Include="Models\UserData.cs" />
     <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Models\UserRegister.cs" />
@@ -269,6 +271,9 @@
     <Content Include="Views\LogedUserHome\LogedHome.cshtml" />
     <Content Include="Views\LogedUserHome\AdminHome.cshtml" />
     <Content Include="Views\LogedUserHome\ClientHome.cshtml" />
+    <Content Include="Views\ForgetPassword\ForgetPassword.cshtml" />
+    <Content Include="Views\ForgetPassword\EnterCode.cshtml" />
+    <Content Include="Views\ForgetPassword\PasswordResetSuccess.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -280,6 +285,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\" />
     <Folder Include="Views\Email_Setup\" />
+    <Folder Include="Views\ResetPasswordViewModel\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MRSUTWeb.BusinessLogic\MRSUTWeb.BusinessLogic.csproj">

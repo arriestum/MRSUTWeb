@@ -31,7 +31,7 @@
                 if (user != null)
                 {
                     ViewBag.UserRole = user.Level;
-                    return RedirectToAction("LogedUserHome", "LogedHome");
+                    return RedirectToAction("LogedHome", "LogedUserHome");
                 }
             }
             

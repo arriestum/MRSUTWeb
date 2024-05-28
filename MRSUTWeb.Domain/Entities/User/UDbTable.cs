@@ -25,5 +25,7 @@ namespace MRSUTWeb.Domain.Entities.User
         public string Password { get; set; }
         public string Salt { get; set; }
         public string Code { get; set; }
+        public string ResetPasswordCode { get; set; }
+
     }
 }
