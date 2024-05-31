@@ -1,347 +1,364 @@
 ﻿@{
-     ViewBag.Title = "ClientHome";
-     Layout = "~/Views/Shared/_LayoutWithUser.cshtml";
+    ViewBag.Title = "ClientHome";
+    Layout = "~/Views/Shared/_LayoutWithUser.cshtml";
 }
 
 <style>
-     .pagecontent {
-          display: flex;
-          font-family: Arial, sans-serif;
-     }
+    .pagecontent {
+        display: flex;
+        font-family: Arial, sans-serif;
+    }
 
-     .menu {
-          width: 200px;
-          border-right: 1px solid #000;
-          padding: 20px;
-     }
+    .menu {
+        width: 200px;
+        border-right: 1px solid #000;
+        padding: 20px;
+    }
 
-          .menu button {
-               display: block;
-               width: 100%;
-               margin-bottom: 10px;
-               padding: 10px;
-               background-color: #f0f0f0;
-               border: 1px solid #ccc;
-               cursor: pointer;
-          }
+        .menu button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
 
-     .content {
-          flex-grow: 1;
-          padding: 20px;
-     }
+    .content {
+        flex-grow: 1;
+        padding: 20px;
+    }
 
-          .content div {
-               display: none;
-          }
+        .content div {
+            display: none;
+        }
 
-               .content div.active {
-                    display: block;
-               }
+            .content div.active {
+                display: block;
+            }
 
-     .card {
-          position: relative;
-          width: 400px;
-          height: 200px;
-          border: 2px solid #000;
-          background-color: #808080;
-          margin-top: 20px;
-     }
+    .card {
+        position: relative;
+        width: 400px;
+        height: 200px;
+        border: 2px solid #000;
+        background-color: #808080;
+        margin-top: 20px;
+    }
 
-          .card .bank-name {
-               font-size: 25px;
-               position: absolute;
-               top: 10px;
-               right: 10px;
-               color: white;
-          }
+        .card .bank-name {
+            font-size: 25px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: white;
+        }
 
-          .card .balance {
-               position: absolute;
-               top: 60%;
-               left: 50%;
-               transform: translate(-50%, -50%);
-               color: white;
-          }
+        .card .balance {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+        }
 
-          .card .card-number {
-               position: absolute;
-               top: 50%;
-               left: 50%;
-               transform: translate(-50%, -50%);
-               color: white;
-          }
+        .card .card-number {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+        }
 
-          .card .owner-name {
-               position: absolute;
-               bottom: 10px;
-               left: 10px;
-               color: white;
-          }
+        .card .owner-name {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: white;
+        }
 
-          .card .expire-date {
-               position: absolute;
-               bottom: 10px;
-               right: 10px;
-               color: white;
-          }
+        .card .expire-date {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            color: white;
+        }
 
-     .cont {
-          position: relative;
-          width: 400px;
-          height: 200px;
-          border: 2px solid #000;
-          background-color: #5c3dce;
-          margin-top: 20px;
-          display: block;
-     }
+    .cont {
+        position: relative;
+        width: 400px;
+        height: 200px;
+        border: 2px solid #000;
+        background-color: #5c3dce;
+        margin-top: 20px;
+        display: block;
+    }
 
-          .cont .account-bank-name {
-               font-size: 25px;
-               position: absolute;
-               top: 10px;
-               right: 10px;
-               color: white;
-               display: block;
-          }
+        .cont .account-bank-name {
+            font-size: 25px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: white;
+            display: block;
+        }
 
-          .cont .account-balance {
-               position: absolute;
-               top: 60%;
-               left: 50%;
-               transform: translate(-50%, -50%);
-               color: white;
-               display: block;
-          }
+        .cont .account-balance {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            display: block;
+        }
 
-          .cont .account-number {
-               position: absolute;
-               top: 50%;
-               left: 50%;
-               transform: translate(-50%, -50%);
-               color: white;
-               display: block;
-          }
+        .cont .account-number {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            display: block;
+        }
 
-          .cont .account-owner-name {
-               position: absolute;
-               bottom: 10px;
-               left: 10px;
-               color: white;
-               display: block;
-          }
+        .cont .account-owner-name {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: white;
+            display: block;
+        }
 
-          .cont .account-creation-date {
-               position: absolute;
-               bottom: 10px;
-               right: 10px;
-               color: white;
-               display: block;
-          }
+        .cont .account-creation-date {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            color: white;
+            display: block;
+        }
 
-     #transfer-content {
-          font-family: Arial, sans-serif;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 100vh;
-          margin: 0;
-          background-color: #f4f4f4;
-     }
+    #transfer-content {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f4f4f4;
+    }
 
-     #transfer .container {
-          padding: 20px;
-          border-radius: 8px;
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-          width: 400px;
-     }
+    #transfer .container {
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 400px;
+    }
 
-     .p2p-section {
-          margin-bottom: 20px;
-          padding: 15px;
-          border-radius: 8px;
-     }
+    .p2p-section {
+        margin-bottom: 20px;
+        padding: 15px;
+        border-radius: 8px;
+    }
 
-     #transfer input, select {
-          width: calc(100% - 20px);
-          padding: 10px;
-          margin: 5px 0;
-          border: 1px solid #ccc;
-          border-radius: 5px;
-     }
+    #transfer input, select {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
 
-     #transfer .button {
-          width: 100%;
-          padding: 10px;
-          border: none;
-          background-color: #888;
-          color: white;
-          font-size: 16px;
-          cursor: pointer;
-          border-radius: 5px;
-     }
+    #transfer .button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        background-color: #888;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
 
-          #transfer .button:disabled {
-               background-color: #ccc;
-          }
+        #transfer .button:disabled {
+            background-color: #ccc;
+        }
 
-     .modal {
-          display: none;
-          position: fixed;
-          z-index: 1000;
-          left: 20%;
-          top: 30%;
-          width: 60%;
-          height: 288px;
-          background-color: #f0f0f0;
-          border: 1px solid #888;
-          border-radius: 8px;
-          padding: 20px;
-     }
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 20%;
+        top: 30%;
+        width: 60%;
+        height: 288px;
+        background-color: #f0f0f0;
+        border: 1px solid #888;
+        border-radius: 8px;
+        padding: 20px;
+    }
 
-     .modal-content {
-          height: 100%;
-     }
-
-
-     .close {
-          position: absolute;
-          top: 10px;
-          right: 10px;
-          font-size: 24px;
-          cursor: pointer;
-     }
+    .modal-content {
+        height: 100%;
+    }
 
 
-          .close:hover {
-               color: red;
-          }
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+
+        .close:hover {
+            color: red;
+        }
+
+    a.button {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 10px 0;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        color: black;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+        a.button:hover {
+            background-color: #ddd;
+        }
 </style>
 
 <br />
 <br />
 <br />
 <div class="pagecontent">
-     <div class="menu">
-          <button onclick="showContent('carduri')">Carduri</button>
-          <button onclick="showContent('conturi')">Conturi</button>
-          <button onclick="showContent('depozit')">Deschidere Depozit</button>
-          <button onclick="showContent('transfer')">Transfer</button>
-     </div>
-     <div class="content">
-          <div id="carduri" class="active">
-               <h2>Carduri</h2>
-               <span class="card">
-                    <span class="bank-name">Bad Bank</span>
-                    <span class="card-number">1234 **** **** 4321</span>
-                    <span class="owner-name">Justin Bieber</span>
-                    <span class="balance">xx MDL</span>
-                    <span class="expire-date">MM/YY</span>
-               </span>
-               <br />
-               <button onclick="showModalCard()">Generează rechizite card</button>
-          </div>
+    <div class="menu">
+        <button onclick="showContent('carduri')">Carduri</button>
+        <button onclick="showContent('conturi')">Conturi</button>
+        <button onclick="showContent('depozit')">Deschidere Depozit</button>
+        <button onclick="showContent('transfer')">Transfer</button>
+    </div>
+    <div class="content">
+        <div id="carduri" class="active">
+            <h2>Carduri</h2>
+            <span class="card">
+                <span class="bank-name">Bad Bank</span>
+                <span class="card-number">1234 **** **** 4321</span>
+                <span class="owner-name">Justin Bieber</span>
+                <span class="balance">xx MDL</span>
+                <span class="expire-date">MM/YY</span>
+            </span>
+            <br />
+            @Html.ActionLink("Solicită card", "RequestCard", "Card", null, new { @class = "button" })
+        </div>
 
-          <div id="conturi">
-               <h2>Conturi</h2>
-               <span class="cont">
-                    <span class="account-bank-name">Bad Bank</span>
-                    <span class="account-number">MD20BB225912341234123/498</span>
-                    <span class="account-owner-name">Justin Bieber</span>
-                    <span class="account-balance">xx MDL</span>
-                    <span class="account-creation-date">DD/MM/YY</span>
-               </span>
-               <br />
-               <button onclick="showModalCont()">Generează rechizite cont</button>
-          </div>
-          <div id="depozit">
-               <h2>Deschidere Depozit</h2>
-               <p>*TODO</p>
-          </div>
 
-          <div id="transfer">
-               <h2>Transfer P2P</h2>
-               <span class="p2p-section">
-                    <h3>Expeditor</h3>
-                    <input type="text" placeholder="Numărul de card">
-                    <input type="text" placeholder="Lună">
-                    <input type="text" placeholder="An">
-                    <input type="text" placeholder="CVC/CVV">
-                    <input type="text" placeholder="Numele și prenumele expeditorului">
-               </span>
-               <span class="p2p-section">
-                    <h3>Destinatar</h3>
-                    <input type="text" placeholder="Numărul de card">
-                    <input type="text" placeholder="Numele și prenumele destinatarului">
-               </span>
-               <span class="p2p-section">
-                    <h3>Suma de transfer</h3>
-                    <input type="number" placeholder="0">
-                    <select>
-                         <option value="MDL">MDL</option>
-                    </select>
-                    <input type="text" placeholder="Taxa de transfer" readonly>
-                    <input type="text" placeholder="Total, inclusiv taxa" readonly>
-               </span>
+        <div id="conturi">
+            <h2>Conturi</h2>
+            <span class="cont">
+                <span class="account-bank-name">Bad Bank</span>
+                <span class="account-number">MD20BB225912341234123/498</span>
+                <span class="account-owner-name">Justin Bieber</span>
+                <span class="account-balance">xx MDL</span>
+                <span class="account-creation-date">DD/MM/YY</span>
+            </span>
+            <br />
+            <button onclick="showModalCont()">Generează rechizite cont</button>
+        </div>
+        <div id="depozit">
+            <h2>Deschidere Depozit</h2>
+            <p>*TODO</p>
+        </div>
 
-               <button class="button" id="transfer-button" disabled>TRANSFER</button>
-          </div>
-     </div>
+        <div id="transfer">
+            <h2>Transfer P2P</h2>
+            <span class="p2p-section">
+                <h3>Expeditor</h3>
+                <input type="text" placeholder="Numărul de card">
+                <input type="text" placeholder="Lună">
+                <input type="text" placeholder="An">
+                <input type="text" placeholder="CVC/CVV">
+                <input type="text" placeholder="Numele și prenumele expeditorului">
+            </span>
+            <span class="p2p-section">
+                <h3>Destinatar</h3>
+                <input type="text" placeholder="Numărul de card">
+                <input type="text" placeholder="Numele și prenumele destinatarului">
+            </span>
+            <span class="p2p-section">
+                <h3>Suma de transfer</h3>
+                <input type="number" placeholder="0">
+                <select>
+                    <option value="MDL">MDL</option>
+                </select>
+                <input type="text" placeholder="Taxa de transfer" readonly>
+                <input type="text" placeholder="Total, inclusiv taxa" readonly>
+            </span>
+
+            <button class="button" id="transfer-button" disabled>TRANSFER</button>
+        </div>
+    </div>
 </div>
 <div id="myModalCard" class="modal">
-     <div class="modal-content">
-          <div class="modal-content">
-               <span class="close" onclick="closeModalCard()">&times;</span>
+    <div class="modal-content">
+        <div class="modal-content">
+            <span class="close" onclick="closeModalCard()">&times;</span>
 
-               <p>Rechizitele bancare card pentru persoana fizica</p>
-               <p>Numar card: 1234 1234 1234 1234 </p>
-               <p>IBAN: MD20BB225912341234123/498</p>
-               <p>IDNP: 1234567890123</p>
-               <p>Valuta: MDL</p>
-               <p>Destinatar: Justin Bieber</p>
-               <p><i>Copyright © 2024 BadBank. Serviciul Suport Clienţi:  +373 11 22 55 email: badbank@nil.com</i></p>
-          </div>
-     </div>
+            <p>Rechizitele bancare card pentru persoana fizica</p>
+            <p>Numar card: 1234 1234 1234 1234 </p>
+            <p>IBAN: MD20BB225912341234123/498</p>
+            <p>IDNP: 1234567890123</p>
+            <p>Valuta: MDL</p>
+            <p>Destinatar: Justin Bieber</p>
+            <p><i>Copyright © 2024 BadBank. Serviciul Suport Clienţi:  +373 11 22 55 email: badbank@nil.com</i></p>
+        </div>
+    </div>
 </div>
 <div id="myModalCont" class="modal">
-     <div class="modal-content">
-          <span class="close" onclick="closeModalCont()">&times;</span>
+    <div class="modal-content">
+        <span class="close" onclick="closeModalCont()">&times;</span>
 
-          <p>Rechizitele bancare cont pentru persoana fizica</p>
-          <p>Banca destinatara: BadBank </p>
-          <p>IBAN: MD20BB225912341234123/498</p>
-          <p>SWIFT/BIC Cod: BBMDMD2X XXX</p>
-          <p>Locatia: Chisinau, Moldova</p>
-          <p>Destinatar: Justin Bieber</p>
-          <p><i>Copyright © 2024 BadBank. Serviciul Suport Clienţi:  +373 11 22 55 email: badbank@nil.com</i></p>
-     </div>
+        <p>Rechizitele bancare cont pentru persoana fizica</p>
+        <p>Banca destinatara: BadBank </p>
+        <p>IBAN: MD20BB225912341234123/498</p>
+        <p>SWIFT/BIC Cod: BBMDMD2X XXX</p>
+        <p>Locatia: Chisinau, Moldova</p>
+        <p>Destinatar: Justin Bieber</p>
+        <p><i>Copyright © 2024 BadBank. Serviciul Suport Clienţi:  +373 11 22 55 email: badbank@nil.com</i></p>
+    </div>
 </div>
 <script>
-     function showContent(section) {
-          var sections = document.querySelectorAll('.content div');
-          sections.forEach(function (sec) {
-               sec.classList.remove('active');
-          });
+    function showContent(section) {
+        var sections = document.querySelectorAll('.content div');
+        sections.forEach(function (sec) {
+            sec.classList.remove('active');
+        });
 
-          var selectedSection = document.getElementById(section);
-          if (selectedSection) {
-               selectedSection.classList.add('active');
-          }
-     }
+        var selectedSection = document.getElementById(section);
+        if (selectedSection) {
+            selectedSection.classList.add('active');
+        }
+    }
 
-     function showModalCard() {
-          var modal = document.getElementById("myModalCard");
-          modal.style.display = "block";
-     }
-     function closeModalCard() {
-          var modal = document.getElementById("myModalCard");
-          modal.style.display = "none";
-     }
-     function showModalCont() {
-          var modal = document.getElementById("myModalCont");
-          modal.style.display = "block";
-     }
-     function closeModalCont() {
-          var modal = document.getElementById("myModalCont");
-          modal.style.display = "none";
-     }
+    function showModalCard() {
+        var modal = document.getElementById("myModalCard");
+        modal.style.display = "block";
+    }
+    function closeModalCard() {
+        var modal = document.getElementById("myModalCard");
+        modal.style.display = "none";
+    }
+    function showModalCont() {
+        var modal = document.getElementById("myModalCont");
+        modal.style.display = "block";
+    }
+    function closeModalCont() {
+        var modal = document.getElementById("myModalCont");
+        modal.style.display = "none";
+    }
 </script>

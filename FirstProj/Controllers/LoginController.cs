@@ -30,7 +30,7 @@
                 var user = _session.GetUserByCookie(xKeyCookie.Value);
                 if (user != null)
                 {
-                    ViewBag.UserRole = user.Level;
+                    ViewBag.UserRole = user.ID_Type_user;
                     return RedirectToAction("LogedHome", "LogedUserHome");
                 }
             }

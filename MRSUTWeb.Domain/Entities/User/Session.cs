@@ -21,5 +21,7 @@ namespace MRSUTWeb.Domain.Entities.User
         [Required]
         public DateTime ExpiryDateTime { get; set; }
         public virtual UDbTable Users { get; set; }
+        public Session() { }
+        
     }
 }

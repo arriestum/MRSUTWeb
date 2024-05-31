@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using MRSUTWeb.BusinessLogic.Interfaces;
 using MRSUTWeb.BusinessLogic;
+using Microsoft.Ajax.Utilities;
 
 namespace MRSUTWeb.Web.Controllers
 {
@@ -22,8 +23,16 @@ namespace MRSUTWeb.Web.Controllers
                 var user = _session.GetUserByCookie(xKeyCookie.Value);
                 if (user != null)
                 {
-                    ViewBag.UserRole = user.Level;
-                    return View();
+                    ViewBag.UserRole = user.ID_Type_user;
+
+                    switch (user.ID_Type_user)
+                    {
+                        case 1:
+                            return RedirectToAction("ClientHome", "LogedUserHome");
+                        case 2:
+                            return RedirectToAction("AdminHome", "LogedUserHome");
+                        
+                    }
                 }
             }
             if (xKeyCookie == null)

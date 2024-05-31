@@ -25,8 +25,8 @@ namespace MRSUTWeb.BusinessLogic.Core
             string salt = HashSaltGenerate.GenerateSalt();
             string code = HashSaltGenerate.GeneraterRandomCode();
             string hashPassword = HashSaltGenerate.HashPasswordWithSalt(register.Password, salt);
-            UDbTable existingEmail;
-            UDbTable existingUsername;
+            //UDbTable existingEmail;
+            //UDbTable existingUsername;
             var validate = new EmailAddressAttribute();
             if (validate.IsValid(register.Email))
             {
@@ -222,7 +222,15 @@ namespace MRSUTWeb.BusinessLogic.Core
         }
 
 
-
+        internal UserMinimal GetUserByRole(int roleValues)
+        {
+            //function to return usersw type role
+            using (var db = new UserContext())
+            {
+                var user = db.Userr.FirstOrDefault(u=>u.ID_Type_user == roleValues);
+                return GetUserByRole(roleValues);
+            }
+        }
         internal UserMinimal UserCookie(string cookie)
         {
             Session session;

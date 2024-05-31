@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CookieGenerator.cs" />
+    <Compile Include="GenerateDataCard.cs" />
     <Compile Include="HashSaltGenerate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

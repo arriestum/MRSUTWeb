@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MRSUTWeb.Domain.Entities.Card;
 using MRSUTWeb.Domain.Entities.User;
 
 
@@ -16,6 +17,7 @@ namespace MRSUTWeb.BusinessLogic.DBModel
         }
 
         public virtual DbSet<UDbTable> Userr { get; set; }
+        public virtual DbSet<CardDbTable> CardDb { get; set; }
         public virtual DbSet<Session> Sessions { get; set; }
     }
 }

@@ -196,6 +196,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CardController.cs" />
     <Compile Include="Controllers\ForgetPasswordController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LogedUserHome.cs" />
@@ -204,6 +205,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Card.cs" />
+    <Compile Include="Models\CardType.cs" />
     <Compile Include="Models\Mail.cs" />
     <Compile Include="Models\ResetPasswordViewModel.cs" />
     <Compile Include="Models\UserData.cs" />
@@ -274,6 +277,7 @@
     <Content Include="Views\ForgetPassword\ForgetPassword.cshtml" />
     <Content Include="Views\ForgetPassword\EnterCode.cshtml" />
     <Content Include="Views\ForgetPassword\PasswordResetSuccess.cshtml" />
+    <Content Include="Views\Card\RequestCard.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

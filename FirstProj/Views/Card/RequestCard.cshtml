@@ -1,0 +1,48 @@
+﻿@model FirstProj.Models.Card
+@{
+    ViewBag.Title = "RequestCard";
+    Layout = "~/Views/Shared/_LayoutWithUser.cshtml";
+}
+<style>
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .btn-primary {
+        padding: 10px 20px;
+        background-color: #007bff;
+        border: none;
+        color: white;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+</style>
+<h2>Request a New Card</h2>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+@using (Html.BeginForm("NewCard", "Card", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(m => m.ID_Type)
+        @Html.DropDownListFor(m => m.ID_Type, new SelectList(Enum.GetValues(typeof(FirstProj.Models.CardType))), new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Balance)
+        @Html.TextBoxFor(m => m.Balance, new { @class = "form-control", type = "number" })
+    </div>
+    <button type="submit" class="btn btn-primary">Request Card</button>
+}

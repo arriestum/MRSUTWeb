@@ -37,7 +37,6 @@ namespace FirstProj.Controllers
         {
             if (ModelState.IsValid)
             {
-                var bl = new BusinessLogic();
                 //create a new user
                 URegister newUser = new URegister
                 {

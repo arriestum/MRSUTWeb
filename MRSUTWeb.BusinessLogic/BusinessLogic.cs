@@ -18,5 +18,11 @@ namespace MRSUTWeb.BusinessLogic
         {
             return null;
         }
+        public ICard GetCardBL()
+        {
+            return new CardBL();
+        }
+
+
     }
 }
