@@ -3,13 +3,27 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Net.Mail;
+using System.Net;
+using MRSUTWeb.BusinessLogic;
+using MRSUTWeb.BusinessLogic.Interfaces;
+using MRSUTWeb.Domain.Entities.User;
+
 
 namespace FirstProj.Controllers
 {
     public class RegisterController : Controller
     {
+        private readonly ISession _session;
+        public RegisterController()
+        {
+            var bl = new BusinessLogic();
+            _session = bl.GetSessionBL();
+        }
         // GET: Register
         public ActionResult NewUser()
         {
@@ -18,45 +32,34 @@ namespace FirstProj.Controllers
 
         // POST: Register
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public ActionResult NewUser(UserRegister register)
         {
             if (ModelState.IsValid)
             {
-                // Add the user to the database         (LocalDB)\MSSQLLocalDB
-
-                string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=MRSUTWeb;Integrated Security=True"; 
-                string query = "INSERT INTO Temp_Userr (Name, Surname, Username, Email, Password) VALUES (@Name, @Surname, @Username, @Email, @Password)";
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                //create a new user
+                URegister newUser = new URegister
                 {
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("@ID_User", register.Id);
-                        command.Parameters.AddWithValue("@Name", register.Name);
-                        command.Parameters.AddWithValue("@Surname", register.Surname);
-                        command.Parameters.AddWithValue("@Username", register.Username);
-                        command.Parameters.AddWithValue("@Email", register.Email);
-                        command.Parameters.AddWithValue("@Password", register.Password);
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                    }
-                }
-                ViewBag.Message = "User added successfully!";
+                    Name = register.Name,
+                    Surname = register.Surname,
+                    Username = register.Username,
+                    Email = register.Email,
+                    Password = register.Password
+                };
+                _session.Insert_RegisterUserAction(newUser);
+                //_session.SendEmail_Register(newUser);
 
-            }
-            else
-            {
-                ViewBag.Message = "Failed to add user!";
-                return View(register);
+                ViewBag.Message = "User registered successfully";
+                
             }
             return View();
+
 
         }
         public ActionResult Index()
         {
             return View();
         }
-
 
 
     }

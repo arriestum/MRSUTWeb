@@ -13,6 +13,16 @@ namespace MRSUTWeb.BusinessLogic
         {
             return new SessionBL();
         }
-    }
 
+        public ISession GetSessionAdminBL()
+        {
+            return null;
+        }
+        public ICard GetCardBL()
+        {
+            return new CardBL();
+        }
+
+
+    }
 }

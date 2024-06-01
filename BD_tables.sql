@@ -1,4 +1,4 @@
-﻿USE MASTER
+USE MASTER
 GO
 IF EXISTS(SELECT * FROM sys.databases WHERE NAME='MRSUTWeb')
 BEGIN
@@ -12,28 +12,28 @@ GO
 USE MRSUTWeb
 GO
 
-CREATE TABLE [dbo].[Userr](
-[ID_User]		[int] PRIMARY KEY IDENTITY,
-[Name]	[nvarchar](50) NOT NULL,
-[Surname]	[nvarchar](50) NOT NULL,
-[Username]	[nvarchar](50) NOT NULL,
-[Password]	[nvarchar](50) NOT NULL,
-[Email]		[nvarchar](50) NOT NULL,
-[LastLogin]	[datetime] NOT NULL,
-[LastIp]	[nvarchar](30) NOT NULL
+
+CREATE TABLE [dbo].[Type_user](
+[ID_Type_user] [int] PRIMARY KEY,
+[Name] 		   [nvarchar](50) NOT NULL
 )
 GO
+INSERT INTO Type_user VALUES
+(1,'Neconfirmat'),
+(2,'Confirmat')
+GO
 
-CREATE TABLE [dbo].[Temp_Userr](
+CREATE TABLE [dbo].[Userr](
 [ID_User]		[int] PRIMARY KEY IDENTITY,
+[ID_Type_user] [int] FOREIGN KEY REFERENCES Type_user(ID_Type_user),
 [Name]	[nvarchar](50) NOT NULL,
 [Surname]	[nvarchar](50) NOT NULL,
 [Username]	[nvarchar](50) NOT NULL,
-[Password]	[nvarchar](50) NOT NULL,
-[Email]		[nvarchar](50) NOT NULL
+[Hash_Password]	[nvarchar](256) NOT NULL,
+[Salt] [nvarchar](50) NOT NULL,
+[Email]		[nvarchar](50) NOT NULL,
+[Code] [varchar](6) NOT NULL
 )
-
-
 GO 
 CREATE TABLE [dbo].[Tip_tranzactie](
 [ID_tip_tranzactie] [int] PRIMARY KEY IDENTITY,
@@ -49,7 +49,7 @@ CREATE TABLE [dbo].[Status_card](
 
 GO
 CREATE TABLE [dbo].[Tip_card](
-[Type_ID_card] [int] PRIMARY KEY IDENTITY,
+[ID_Type_card] [int] PRIMARY KEY IDENTITY,
 [Name] 		   [nvarchar](50) NOT NULL
 );
 
@@ -58,7 +58,7 @@ GO
 
 CREATE TABLE [dbo].[Cardd](
 [ID_Card]		[int] PRIMARY KEY IDENTITY,
-[Type_ID_Card]	[int] FOREIGN KEY REFERENCES Tip_card(Type_ID_Card),
+[ID_Type_card]	[int] FOREIGN KEY REFERENCES Tip_card(ID_Type_card),
 [ID_Status]		[int] FOREIGN KEY REFERENCES Status_card(ID_Status),
 [ID_User]		[int] FOREIGN KEY REFERENCES Userr(ID_User),
 [Number]		[char](16) NOT NULL,
@@ -75,25 +75,11 @@ CREATE TABLE [dbo].[Transaction](
 [Date]			          [datetime] NOT NULL,
 [Balance] 	              [float](50) NOT NULL
 );
-
 GO
-
-CREATE PROCEDURE InsertTempUser
-(
-    @ID_User INT,
-    @Name NVARCHAR(50),
-    @Surname NVARCHAR(50),
-    @Username NVARCHAR(50),
-    @Password NVARCHAR(50),
-    @Email NVARCHAR(50)
-)
-AS
-BEGIN
-    SET NOCOUNT ON;
-    
-    INSERT INTO Temp_Userr (ID_User, Name, Surname, Username, Password, Email)
-    VALUES (@ID_User, @Name, @Surname, @Username, @Password, @Email);
-END;
-
-
-
+CREATE TABLE [dbo].[Sessions](
+ID_Session [int] PRIMARY KEY IDENTITY,
+ID_User [int] FOREIGN KEY REFERENCES Userr(ID_User),
+SessionToken [nvarchar](100) NOT NULL,
+ExpiryDateTime [datetime] NOT NULL
+);
+GO

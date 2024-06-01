@@ -183,22 +183,3 @@
 
 })()
 
-var termsCheck = document.getElementById('TermsCheck');
-var privacyCheck = document.getElementById('PrivacyCheck');
-var logInButton = document.getElementById('LogInButton');
-
-termsCheck.addEventListener('change', toggleButtonState);
-privacyCheck.addEventListener('change', toggleButtonState);
-
-function toggleButtonState() {
-     if (termsCheck.checked && privacyCheck.checked) {
-          logInButton.disabled = false;
-     } else {
-          logInButton.disabled = true;
-     }
-}
-
-
-function redirectToPage() {
-     window.location.href = '~/Home/Index';
-}

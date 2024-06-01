@@ -1,34 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Optimization;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace FirstProj
+public class RouteConfig
 {
-    public class RouteConfig
+    public static void RegisterRoutes(RouteCollection routes)
     {
-        public static void RegisterRoutes(RouteCollection routes)
-        {
-            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+        routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
+        routes.MapRoute(
             name: "LogIn",
             url: "Login/LogIn",
             defaults: new { controller = "Login", action = "LogIn" }
-            );
+        );
 
+        routes.MapRoute(
+            name: "Default",
+            url: "{controller}/{action}/{id}",
+            defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+        );
 
-
-            routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
-        }
-        
+        routes.MapRoute(
+            name: "LogedHome",
+            url: "LogedUserHome/LogedHome",
+            defaults: new { controller = "LogedUserHome", action = "LogedHome" }
+        );
     }
 }

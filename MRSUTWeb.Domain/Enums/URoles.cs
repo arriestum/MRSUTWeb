@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MRSUTWeb.Helpers
+namespace MRSUTWeb.Domain.Enums
 {
-    public class Class1
+    public enum URoles
     {
+        User,
+        Admin
     }
 }
