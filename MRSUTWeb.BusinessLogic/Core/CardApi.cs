@@ -40,9 +40,9 @@ namespace MRSUTWeb.BusinessLogic.Core
             //get id_user from cookie
             var user = UserCookie(xKeyCookie.Value);
             card.ID_User = user.ID_User;
-            card.UserName = user.UserName;
-            card.UserSurname = user.UserSurname;
-            card.ID_Type = user.ID_Type_user;
+            card.UserName = user.Username;
+            card.UserSurname = user.Surname;
+            card.ID_Type = card.ID_Type;
             var newCard = new CardDbTable
             {
                 

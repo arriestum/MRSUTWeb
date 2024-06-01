@@ -17,7 +17,7 @@ namespace FirstProj.Models
         [ForeignKey("Users")]
         public int ID_User { get; set; }
         [Key]
-        public int ID_Type { get; set; }
+        public CardType ID_Type { get; set; }
         [Key]
         public string CardNumber { get; set; }
         [Key]

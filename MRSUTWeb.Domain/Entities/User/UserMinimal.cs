@@ -17,9 +17,9 @@ namespace MRSUTWeb.Domain.Entities.User
         [Required]
         public int ID_Type_user { get; set; }
         [Required]
-        public string UserName { get; set; }
+        public string Name { get; set; }
         [Required]
-        public string UserSurname { get; set; }
+        public string Surname { get; set; }
         [Required]
         public string Username { get; set; }
         [Required]
@@ -29,5 +29,6 @@ namespace MRSUTWeb.Domain.Entities.User
         public string Salt { get; set; }
         public string Code { get; set; }
         public string ResetPasswordCode { get; set; }
+        
     }
 }

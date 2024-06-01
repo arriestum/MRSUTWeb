@@ -6,7 +6,7 @@ namespace FirstProj.Models
 {
     public enum CardType
     {
-        Debit,
-        Credit
+        Debit = 1,
+        Credit = 2
     }
 }

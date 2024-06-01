@@ -18,7 +18,7 @@ namespace MRSUTWeb.Domain.Entities.Card
         [ForeignKey("Users")]
         public int ID_User { get; set; }
         [Key, Column(Order = 2)]
-        public int ID_Type { get; set; }
+        public CardTypeDbTable ID_Type { get; set; }
         
         public string CardNumber { get; set; }
         

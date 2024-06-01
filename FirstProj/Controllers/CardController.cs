@@ -31,7 +31,7 @@ namespace FirstProj.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult NewCard(Card register)
+        public ActionResult RequestCard(Card register)
         { 
             var xKeyCookie = Request.Cookies["X-KEY"];
             if (xKeyCookie != null)
@@ -43,15 +43,19 @@ namespace FirstProj.Controllers
                     //ExpiryDate = _cardApi.GenerateExpiryDate(),
                     //CVV = _cardApi.GenerateCVV(),
                     Balance = register.Balance,
-                    ID_Type = register.ID_Type,
+                    ID_Type = (CardTypeDbTable)register.ID_Type,
+                    //I want to get number for specific card type , 1 for debit card and 2 for credit card
+
+
                     //UserName = _context.GetUserFromDatabase(_context.GetUserByCookie(xKeyCookie.Value).ID_User).Username,
                     //UserSurname = _context.GetUserFromDatabase(_context.GetUserByCookie(xKeyCookie.Value).ID_User).Name
                 };
                 _context.InsertCard_M(card, xKeyCookie);
-                ViewBag.Message = "Card registered successfully";
+                //redirect to logged home
+                return RedirectToAction("LogedHome", "LogedUserHome");
             }
 
-            return View();
+            return RedirectToAction("LogedHome", "LogedUserHome");
         }
         // function to get user data from database
 
