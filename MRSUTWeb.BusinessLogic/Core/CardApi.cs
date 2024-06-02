@@ -11,6 +11,8 @@ using System.ComponentModel.DataAnnotations;
 using MRSUTWeb.Domain.Entities.User;
 using AutoMapper;
 using System.Web;
+using System.Net.Mail;
+using System.Net;
 
 namespace MRSUTWeb.BusinessLogic.Core
 {
@@ -35,6 +37,21 @@ namespace MRSUTWeb.BusinessLogic.Core
 
         }
         ////////////////
+        public void SendEmail_ResetPassword(string email, string cardNumber, int cvv)
+        {
+            MailMessage mail = new MailMessage("madarableach55@gmail.com", email);
+            mail.Subject = "BadBank - card deschis cu succes";
+            mail.Body = "Cardul: <strong>" + cardNumber + "</strong> a fost creat cu succes!<br/>CVV-ul cardului este: <strong>" + cvv + "</strong>";
+            mail.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient();
+            smtp.UseDefaultCredentials = false;
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.Credentials = new NetworkCredential("madarableach55@gmail.com", "nhrjcgocqzznmove");
+            smtp.EnableSsl = true;
+            smtp.Send(mail);
+        }
+
         internal void InsertCardAction(CardDbTable card, HttpCookie xKeyCookie)
         {
             //get id_user from cookie
@@ -45,7 +62,6 @@ namespace MRSUTWeb.BusinessLogic.Core
             card.ID_Type = card.ID_Type;
             var newCard = new CardDbTable
             {
-
                 ID_Type = card.ID_Type,
                 ID_User = card.ID_User,
                 CardNumber = GenerateCardNumber(),
@@ -59,6 +75,8 @@ namespace MRSUTWeb.BusinessLogic.Core
             {
                 db.CardDb.Add(newCard);
                 db.SaveChanges();
+
+                SendEmail_ResetPassword(user.Email, newCard.CardNumber, newCard.CVV);
             }
 
         }
