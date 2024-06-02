@@ -29,6 +29,8 @@ namespace FirstProj.Models
         public decimal Balance { get; set; }
         public string UserName { get; set; }
         public string UserSurname { get; set; }
+        public List<string> Cards { get; set; }
+        
 
 
     }

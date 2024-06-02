@@ -16,8 +16,8 @@ namespace MRSUTWeb.BusinessLogic.Interfaces
         int GenerateCVV_M();
         void InsertCard_M(CardDbTable card , HttpCookie xKeyCookie);
         UDbTable GetUserFromDatabase(int ID_User);
-        UserMinimal GetUserByCookie(string cookie);
-
+        UserMinimal GetUserByCookie(string token);
+        List<CardDbTable> GetUserCards(int userId);
         //.GetUserFromDatabase(ID_User)
 
     }

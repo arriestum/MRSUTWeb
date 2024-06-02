@@ -278,6 +278,7 @@
     <Content Include="Views\ForgetPassword\EnterCode.cshtml" />
     <Content Include="Views\ForgetPassword\PasswordResetSuccess.cshtml" />
     <Content Include="Views\Card\RequestCard.cshtml" />
+    <Content Include="Views\Card\_UserCardsPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

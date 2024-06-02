@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<FirstProj.Models.Card>
+@{
     ViewBag.Title = "ClientHome";
     Layout = "~/Views/Shared/_LayoutWithUser.cshtml";
 }
@@ -38,52 +39,6 @@
                 display: block;
             }
 
-    .card {
-        position: relative;
-        width: 400px;
-        height: 200px;
-        border: 2px solid #000;
-        background-color: #808080;
-        margin-top: 20px;
-    }
-
-        .card .bank-name {
-            font-size: 25px;
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            color: white;
-        }
-
-        .card .balance {
-            position: absolute;
-            top: 60%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-        }
-
-        .card .card-number {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-        }
-
-        .card .owner-name {
-            position: absolute;
-            bottom: 10px;
-            left: 10px;
-            color: white;
-        }
-
-        .card .expire-date {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            color: white;
-        }
 
     .cont {
         position: relative;
@@ -246,13 +201,7 @@
     <div class="content">
         <div id="carduri" class="active">
             <h2>Carduri</h2>
-            <span class="card">
-                <span class="bank-name">Bad Bank</span>
-                <span class="card-number">1234 **** **** 4321</span>
-                <span class="owner-name">Justin Bieber</span>
-                <span class="balance">xx MDL</span>
-                <span class="expire-date">MM/YY</span>
-            </span>
+            @Html.Action("UserCards", "Card")
             <br />
             @Html.ActionLink("Solicită card", "RequestCard", "Card", null, new { @class = "button" })
         </div>
