@@ -40,7 +40,7 @@ namespace MRSUTWeb.BusinessLogic.Core
             //get id_user from cookie
             var user = UserCookie(xKeyCookie.Value);
             card.ID_User = user.ID_User;
-            card.UserName = user.Username;
+            card.Name = user.Name;
             card.UserSurname = user.Surname;
             card.ID_Type = card.ID_Type;
             var newCard = new CardDbTable
@@ -52,7 +52,7 @@ namespace MRSUTWeb.BusinessLogic.Core
                 ExpiryDate = GenerateExpiryDate(),
                 CVV = GenerateCVV(),
                 Balance = card.Balance,
-                UserName = card.UserName,
+                Name = card.Name,
                 UserSurname = card.UserSurname
             };
             using (var db = new UserContext())
@@ -70,12 +70,12 @@ namespace MRSUTWeb.BusinessLogic.Core
                 return db.Userr.Find(ID_User);
             }
         }
-        public UserMinimal GetUserByCookie(int Id_user)
+        public UserMinimal GetUserByCookie(string token)
         {
             using (var db = new UserContext())
             {
-                var user = db.Sessions.FirstOrDefault(u => u.ID_User == Id_user);
-                return GetUserByCookie(Id_user);
+                var user = db.Sessions.FirstOrDefault(u => u.SessionToken == token);
+                return UserCookie(token);
             }
             
         }
@@ -103,6 +103,13 @@ namespace MRSUTWeb.BusinessLogic.Core
             var userminimal = mapper.Map<UserMinimal>(currentUser);
 
             return userminimal;
+        }
+        public List<CardDbTable> GetUserCards(int userId)
+        {
+            using (var db = new UserContext())
+            {
+                return db.CardDb.Where(c => c.ID_User == userId).ToList();
+            }
         }
 
     }

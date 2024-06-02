@@ -1,78 +1,82 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using MRSUTWeb.BusinessLogic.Core;
-using MRSUTWeb.BusinessLogic.DBModel;
-using MRSUTWeb.BusinessLogic.Interfaces;
-using MRSUTWeb.Domain.Entities.Card;
-using MRSUTWeb.Domain.Entities.User;
+﻿    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Web;
+    using MRSUTWeb.BusinessLogic.Core;
+    using MRSUTWeb.BusinessLogic.DBModel;
+    using MRSUTWeb.BusinessLogic.Interfaces;
+    using MRSUTWeb.Domain.Entities.Card;
+    using MRSUTWeb.Domain.Entities.User;
 
-namespace MRSUTWeb.BusinessLogic
-{
-    public class SessionBL : UserApi, ISession
+    namespace MRSUTWeb.BusinessLogic
     {
-        public UserMinimal GetUserByCookie(string apiCookieValue)
+        public class SessionBL : UserApi, ISession
         {
-            using (var db = new UserContext())
+            public UserMinimal GetUserByCookie(string apiCookieValue)
             {
-                var user = db.Sessions.FirstOrDefault(u=> u.SessionToken == apiCookieValue);
+                using (var db = new UserContext())
+                {
+                    var user = db.Sessions.FirstOrDefault(u=> u.SessionToken == apiCookieValue);
                 
-            }    
-                return UserCookie(apiCookieValue);
-        }
-        public UserMinimal GetUserRoleByCookie(int roleValues) 
-        { 
-            using (var db = new UserContext())
-            {
-                var user = db.Userr.FirstOrDefault(u=>u.ID_Type_user == roleValues);
+                }    
+                    return UserCookie(apiCookieValue);
             }
-            return GetUserByRole(roleValues);
+            public UserMinimal GetUserRoleByCookie(int roleValues) 
+            { 
+                using (var db = new UserContext())
+                {
+                    var user = db.Userr.FirstOrDefault(u=>u.ID_Type_user == roleValues);
+                }
+                return GetUserByRole(roleValues);
+            }
+            public ULoginResp UserLogin(ULoginData uLoginData)
+            {
+                return UserLoginAction(uLoginData);
+            }
+            public void Insert_RegisterUserAction(URegister register)
+            {
+                RegisterUserAction(register);
+            }
+            public void SendEmail_Register(URegister register, string code)
+            {
+                SendEmail(register, code);
+            }
+            public HttpCookie GenCookie(string loginCredential)
+            {
+                return GenerateAuthCookie(loginCredential);
+            }
         }
-        public ULoginResp UserLogin(ULoginData uLoginData)
+        public class CardBL : CardApi, ICard
         {
-            return UserLoginAction(uLoginData);
-        }
-        public void Insert_RegisterUserAction(URegister register)
-        {
-            RegisterUserAction(register);
-        }
-        public void SendEmail_Register(URegister register, string code)
-        {
-            SendEmail(register, code);
-        }
-        public HttpCookie GenCookie(string loginCredential)
-        {
-            return GenerateAuthCookie(loginCredential);
+            public string GenerateCardNumber_M()
+            {
+                return GenerateCardNumber();
+            }
+            public DateTime GenerateExpiryDate_M()
+            {
+                return GenerateExpiryDate();
+            }
+            public int GenerateCVV_M()
+            {
+                return GenerateCVV();
+            }
+            public void InsertCard_M(CardDbTable card , HttpCookie xKeyCookie)
+            {
+                InsertCardAction(card, xKeyCookie);
+            }
+            public UDbTable GetUserFromDatabase(int ID_User)
+            {
+                return GetUser(ID_User);
+            }
+            public UserMinimal GetUserByCookie_M(string token)
+            {
+                return GetUserByCookie(token);
+            }
+            public List<CardDbTable> GetUserCards_M(int userId)
+            {
+                return GetUserCards(userId);
+            }
         }
     }
-    public class CardBL : CardApi, ICard
-    {
-        public string GenerateCardNumber_M()
-        {
-            return GenerateCardNumber();
-        }
-        public DateTime GenerateExpiryDate_M()
-        {
-            return GenerateExpiryDate();
-        }
-        public int GenerateCVV_M()
-        {
-            return GenerateCVV();
-        }
-        public void InsertCard_M(CardDbTable card , HttpCookie xKeyCookie)
-        {
-            InsertCardAction(card, xKeyCookie);
-        }
-        public UDbTable GetUserFromDatabase(int ID_User)
-        {
-            return GetUser(ID_User);
-        }
-        public UserMinimal GetUserByCookie(string cookie)
-        {
-            return GetUserByCookie(cookie);
-        }
-    }
-}

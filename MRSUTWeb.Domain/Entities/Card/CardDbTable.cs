@@ -29,7 +29,7 @@ namespace MRSUTWeb.Domain.Entities.Card
         [Display(Name = "Balance")]
         public decimal Balance { get; set; }
         
-        public string UserName { get; set; }
+        public string Name { get; set; }
         
         public string UserSurname { get; set; }
         public virtual UDbTable Users { get; set; }

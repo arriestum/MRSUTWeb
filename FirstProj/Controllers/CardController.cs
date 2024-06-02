@@ -58,6 +58,31 @@ namespace FirstProj.Controllers
             return RedirectToAction("LogedHome", "LogedUserHome");
         }
         // function to get user data from database
+        public ActionResult UserCards()
+        {
+            var xKeyCookie = Request.Cookies["X-KEY"];
+            if (xKeyCookie != null)
+            {
+                var user = _context.GetUserByCookie(xKeyCookie.Value);
+                if (user != null)
+                {
+                    var cardsDb = _context.GetUserCards(user.ID_User);
+                    var cards = cardsDb.Select(card => new Card
+                    {
+                        
+                        CardNumber = card.CardNumber,
+                        UserName = card.Name,
+                        UserSurname = card.UserSurname,
+                        Balance = card.Balance,
+                        CardExpDate = card.ExpiryDate
 
+                    }).ToList();
+
+                    return PartialView("_UserCardsPartial", cards);
+                }
+            }
+
+            return PartialView("_UserCardsPartial", new List<Card>());
+        }
     }
 }
