@@ -14,7 +14,7 @@ using System.Web;
 
 namespace MRSUTWeb.BusinessLogic.Core
 {
-     public class CardApi
+    public class CardApi
     {
         public string GenerateCardNumber()
         {
@@ -35,7 +35,7 @@ namespace MRSUTWeb.BusinessLogic.Core
 
         }
         ////////////////
-        internal void InsertCardAction(CardDbTable card , HttpCookie xKeyCookie )
+        internal void InsertCardAction(CardDbTable card, HttpCookie xKeyCookie)
         {
             //get id_user from cookie
             var user = UserCookie(xKeyCookie.Value);
@@ -45,7 +45,7 @@ namespace MRSUTWeb.BusinessLogic.Core
             card.ID_Type = card.ID_Type;
             var newCard = new CardDbTable
             {
-                
+
                 ID_Type = card.ID_Type,
                 ID_User = card.ID_User,
                 CardNumber = GenerateCardNumber(),
@@ -77,7 +77,7 @@ namespace MRSUTWeb.BusinessLogic.Core
                 var user = db.Sessions.FirstOrDefault(u => u.SessionToken == token);
                 return UserCookie(token);
             }
-            
+
         }
         internal UserMinimal UserCookie(string cookie)
         {
@@ -109,6 +109,29 @@ namespace MRSUTWeb.BusinessLogic.Core
             using (var db = new UserContext())
             {
                 return db.CardDb.Where(c => c.ID_User == userId).ToList();
+            }
+        }
+        public void TransferBalance(string senderCardNumber, string receiverCardNumber, decimal amount)
+        {
+            using (var db = new UserContext())
+            {
+                var senderCard = db.CardDb.FirstOrDefault(c => c.CardNumber == senderCardNumber);
+                var receiverCard = db.CardDb.FirstOrDefault(c => c.CardNumber == receiverCardNumber);
+
+                if (senderCard == null || receiverCard == null)
+                {
+                    throw new Exception("One or both cards not found");
+                }
+
+                if (senderCard.Balance < amount)
+                {
+                    throw new Exception("Insufficient funds");
+                }
+
+                senderCard.Balance -= amount;
+                receiverCard.Balance += amount;
+
+                db.SaveChanges();
             }
         }
 

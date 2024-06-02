@@ -279,6 +279,8 @@
     <Content Include="Views\ForgetPassword\PasswordResetSuccess.cshtml" />
     <Content Include="Views\Card\RequestCard.cshtml" />
     <Content Include="Views\Card\_UserCardsPartial.cshtml" />
+    <Content Include="Views\Card\TransferSucces.cshtml" />
+    <Content Include="Views\Card\TransferNotSucces.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -10,6 +10,7 @@ using FirstProj.Models;
 using MRSUTWeb.BusinessLogic.DBModel;
 using MRSUTWeb.BusinessLogic.Core;
 using MRSUTWeb.Domain.Entities.User;
+using System.Text.RegularExpressions;
 
 namespace FirstProj.Controllers
 {
@@ -32,7 +33,7 @@ namespace FirstProj.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult RequestCard(Card register)
-        { 
+        {
             var xKeyCookie = Request.Cookies["X-KEY"];
             if (xKeyCookie != null)
             {
@@ -69,7 +70,7 @@ namespace FirstProj.Controllers
                     var cardsDb = _context.GetUserCards(user.ID_User);
                     var cards = cardsDb.Select(card => new Card
                     {
-                        
+
                         CardNumber = card.CardNumber,
                         UserName = card.Name,
                         UserSurname = card.UserSurname,
@@ -83,6 +84,42 @@ namespace FirstProj.Controllers
             }
 
             return PartialView("_UserCardsPartial", new List<Card>());
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public ActionResult Transfer(string senderCardNumber, string receiverCardNumber, decimal amount, string senderExpireDate, string senderCVV)
+        {
+            /*if (string.IsNullOrEmpty(senderExpireDate) || string.IsNullOrEmpty(senderCVV))
+            {
+                ViewBag.Error = "Data de expirare și CVV-ul sunt obligatorii.";
+                return RedirectToAction("TransferNotSucces");
+            }
+
+
+             if (!Regex.IsMatch(senderExpireDate, @"^(0[1-9]|1[0-2])/\d{4}$") || !Regex.IsMatch(senderCVV, @"^\d{3}$"))
+            {
+                ViewBag.Error = "Data de expirare sau CVV incorecte.";
+                return RedirectToAction("TransferNotSucces");
+            } */
+            try
+            {
+                _cardApi.TransferBalance(senderCardNumber, receiverCardNumber, amount);
+                return RedirectToAction("TransferSucces");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+                return RedirectToAction("TransferNotSucces");
+            }
+        }
+        public ActionResult TransferSucces()
+        {
+            return View();
+        }
+        public ActionResult TransferNotSucces()
+        {
+            return View();
         }
     }
 }
