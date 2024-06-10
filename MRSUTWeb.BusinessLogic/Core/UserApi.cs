@@ -51,7 +51,7 @@ namespace MRSUTWeb.BusinessLogic.Core
                     Password = hashPassword,
                     Salt = salt,
                     Code = code,
-                    ID_Type_user = 1
+                    ID_Type_user = 0
                 };
                 using (var db = new UserContext())
                 {
@@ -227,7 +227,7 @@ namespace MRSUTWeb.BusinessLogic.Core
             //function to return usersw type role
             using (var db = new UserContext())
             {
-                var user = db.Userr.FirstOrDefault(u=>u.ID_Type_user == roleValues);
+                var user = db.Userr.FirstOrDefault(u => u.ID_Type_user == roleValues);
                 return GetUserByRole(roleValues);
             }
         }
@@ -255,6 +255,22 @@ namespace MRSUTWeb.BusinessLogic.Core
             var userminimal = mapper.Map<UserMinimal>(currentUser);
 
             return userminimal;
+        }
+        public void UpdateUserRole(HttpCookie cookie, int user_id_type)
+        {
+            using (var db = new UserContext())
+            {
+                var session = db.Sessions.FirstOrDefault(s => s.SessionToken == cookie.Value && s.ExpiryDateTime > DateTime.Now);
+                if (session != null)
+                {
+                    var user = db.Userr.FirstOrDefault(u => u.ID_User == session.ID_User);
+                    if (user != null)
+                    {
+                        user.ID_Type_user = user_id_type;
+                        db.SaveChanges();
+                    }
+                }
+            }
         }
 
 

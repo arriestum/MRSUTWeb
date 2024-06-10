@@ -27,11 +27,13 @@ namespace MRSUTWeb.Web.Controllers
 
                     switch (user.ID_Type_user)
                     {
+                        case 0:
+                            return RedirectToAction("ConfirmateAccount", "Register");
                         case 1:
                             return RedirectToAction("ClientHome", "LogedUserHome");
                         case 2:
                             return RedirectToAction("AdminHome", "LogedUserHome");
-                        
+
                     }
                 }
             }

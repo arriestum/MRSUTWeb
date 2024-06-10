@@ -1,0 +1,62 @@
+﻿@model FirstProj.Models.VerificationCode
+
+@{
+    ViewBag.Title = "Enter Verification Code";
+}
+<style>
+    .panel {
+        max-width: 400px;
+        margin: 0 auto;
+        margin-top: 50px;
+    }
+
+    .panel-heading {
+        text-align: center;
+    }
+
+    .panel-body {
+        padding: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .login {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+        .login:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+</style>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h2>Enter Verification Code</h2>
+
+@using (Html.BeginForm("EnterCode", "Register", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Code, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Submit" class="btn btn-default" />
+        </div>
+    </div>
+}

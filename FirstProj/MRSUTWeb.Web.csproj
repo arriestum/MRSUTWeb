@@ -212,6 +212,7 @@
     <Compile Include="Models\UserData.cs" />
     <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Models\UserRegister.cs" />
+    <Compile Include="Models\VerificationCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -281,6 +282,7 @@
     <Content Include="Views\Card\_UserCardsPartial.cshtml" />
     <Content Include="Views\Card\TransferSucces.cshtml" />
     <Content Include="Views\Card\TransferNotSucces.cshtml" />
+    <Content Include="Views\Register\ConfirmateAccount.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

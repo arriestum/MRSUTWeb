@@ -50,7 +50,7 @@ namespace FirstProj.Controllers
                 //_session.SendEmail_Register(newUser);
 
                 ViewBag.Message = "User registered successfully";
-                
+
             }
             return View();
 
@@ -60,7 +60,44 @@ namespace FirstProj.Controllers
         {
             return View();
         }
+        public ActionResult ConfirmateAccount()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EnterCode(VerificationCode model)
+        {
+            var xKeyCookie = Request.Cookies["X-KEY"];
 
+            if (xKeyCookie != null)
+            {
+                var user = _session.GetUserByCookie(xKeyCookie.Value);
+                if (user != null)
+                {
+                    //check inputed code with the one in the database
+
+                    if (user.Code == model.Code)
+                    {
+                        //update user role
+                        //_session.UpdateUserRole(xKeyCookie, model.Code);
+                        //update user role to 1
+                        ViewBag.UserRole = user.ID_Type_user;
+                        user.ID_Type_user = 1;
+                        _session.UpdateUserRole(xKeyCookie, user.ID_Type_user);
+                        return RedirectToAction("ClientHome", "LogedUserHome");
+
+                    }
+                    else
+                    {
+                        ViewBag.UserRole = user.ID_Type_user;
+                        return RedirectToAction("LogedHome", "LogedUserHome");
+
+                    }
+                }
+            }
+            return View();
+        }
 
     }
 }

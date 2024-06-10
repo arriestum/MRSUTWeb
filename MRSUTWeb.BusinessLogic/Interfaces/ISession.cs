@@ -15,6 +15,7 @@ namespace MRSUTWeb.BusinessLogic.Interfaces
         void Insert_RegisterUserAction(URegister register);
         void SendEmail_Register(URegister register, string code);
         HttpCookie GenCookie(string loginCredential);
+        void UpdateUserRole(HttpCookie cookie, int user_id_type);
     }
 }
 
